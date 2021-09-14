@@ -1,0 +1,175 @@
+/* 
+   pink     #FFDDE2FF
+   orange   #FAA094FF
+   light G  #9ED9CCFF
+   dark G   #008C76FF
+   g        #198754
+   font-family: 'Catamaran', sans-serif;
+   font-family: 'Dancing Script', cursive;
+   font-family: 'Rampart One', cursive;
+
+   heading fonts 
+        Rampart One 
+        Special Elite
+        Press Start 2P
+
+        handwriting fonts 
+        Dancing Script 
+        Allison 
+        Parisienne
+
+        plan fonts 
+        Mukta
+        Indie Flower 
+        Catamaran 
+*/
+
+.clickable {
+    cursor: pointer;
+}
+
+.row-margin {
+    margin: 35px;
+}
+
+.card {
+    border-radius: 1.25rem;
+}
+
+.rounded-left {
+    border-top-left-radius: 60px 40px;
+    border-bottom-left-radius: 60px 40px;
+}
+
+.rounded-right {
+    border-top-right-radius: 60px 40px;
+    border-bottom-right-radius: 60px 40px;
+}
+
+.hero-box {
+    font-family: 'Catamaran', sans-serif;
+    color: #FFDDE2FF;
+    width: max-content;
+    padding: 5px;
+    font-weight: 600;
+}
+
+.bg-pink {
+    background-color: #FAA094FF;
+    padding-left: 0px;
+}
+
+.bg-light-pink {
+    background-color: #FFDDE2FF
+}
+
+.top {
+    margin-top: 85px;
+}
+
+.m-left {
+    /* margin-left: -12px; */
+}
+
+.h1-margins {
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+}
+
+h1,
+.h1,
+h4,
+h5 {
+    font-family: 'Dancing Script', cursive;
+    color: #008C76FF;
+    font-size: 3rem;
+}
+
+h4,
+h5 {
+    font-size: 1.6rem;
+}
+
+h2 {
+    font-family: 'Catamaran', sans-serif;
+    font-weight: 800;
+    color: #008C76FF;
+}
+
+h3 {
+    font-family: 'Catamaran', sans-serif;
+    color: black
+}
+
+.bg-dark {
+    background-color: #9ED9CCFF!important;
+}
+
+.navbar-dark .navbar-brand {
+    color: #198754;
+    font-family: 'Rampart One', cursive;
+    font-size: 2rem;
+    white-space: normal;
+}
+
+.btn-outline-success {
+    white-space: nowrap;
+}
+
+.navbar-dark .navbar-nav .nav-link.active,
+.navbar-dark .navbar-nav .show>.nav-link {
+    color: green;
+}
+
+.navbar-dark .navbar-toggler {
+    color: rgba(255, 255, 255, .55);
+    /* border-color: rgba(255,255,255,.1); */
+}
+
+.home {
+    background-image: url("/img/welcomebw2.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 600px;
+}
+
+@media only screen and (max-width: 992px) {
+    /* For mobile phones: */
+    h1 {
+        font-size: 2rem
+    }
+    h4 {
+        font-size: 1.2rem;
+    }
+    h3,
+    h7 {
+        font-size: 1rem;
+    }
+    .m-left {
+        margin-left: 0;
+    }
+    .top {
+        margin-top: 60px;
+    }
+    .m-m-top {
+        margin-top: 15px;
+    }
+    .rounded-left {
+        border-radius: 2%;
+    }
+    .rounded-right {
+        border-top-right-radius: 0 0;
+        border-bottom-right-radius: 0 0;
+    }
+    .bg-pink {
+        padding: 0;
+    }
+}
+
+@media only screen and (max-width: 760px) {
+    /* For mobile phones: */
+    .navbar-dark .navbar-brand {
+        font-size: 1rem;
+    }
+}
