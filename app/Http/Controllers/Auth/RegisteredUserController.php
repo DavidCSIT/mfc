@@ -43,9 +43,13 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
  
+        $family = Family::create([
+            'name' => $request->family,
+        ]);
+
         $user = User::create([
             'name' => $request->name,
-            'family_id' => $request->family,
+            'family_id' => $family->id ,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
