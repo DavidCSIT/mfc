@@ -47,7 +47,7 @@
         </div>
 
         <div class="form-group mt-2">
-            <input name="family" type="email" class="form-control" placeholder="Enter the Family name for your cookbook" value="" minlength="2" required>
+            <input name="family" type="text" class="form-control" placeholder="Enter the Family name for your cookbook" value="" minlength="2" required>
             <div class="valid-feedback">
                 Looks good!
             </div>
