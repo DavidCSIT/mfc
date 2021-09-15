@@ -17,7 +17,7 @@ class HomeController extends Controller
     {
         $meals = Meal::all();
         $cuisines = Cuisine::all();
-        $familys = Family::where( 'private',0)->get();
+        $familys = Family::where( 'public_access',1)->get();
 
         $search = [];
         $serves = isset($request->serves) ? $request->serves : 0;
@@ -53,7 +53,7 @@ class HomeController extends Controller
             $servesFrom = 5;
         }
 
-        $search['families.private'] = 0;
+        $search['families.public_access'] = 0;
         // $recipes = DB::table('recipes')
         //     ->join('users', 'users.id', '=', 'recipes.user_id' )
         //     ->where('users.family_id','=', 1)
