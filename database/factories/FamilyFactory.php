@@ -24,7 +24,7 @@ class FamilyFactory extends Factory
         return [
             'name' => $this->faker->word,
             'image' => $this->faker->image,
-            'private' => false,
+            'public_access' => false,
             'created_at' => now(),
             'updated_at' => now()
         ];

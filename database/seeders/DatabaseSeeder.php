@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder
         \App\Models\Cuisine::factory(1)->create(['name' => 'Mexican']);
         
         \App\Models\Family::factory(1)->create(['name' => 'Cartman']);
-        \App\Models\Family::factory(1)->create(['name' => 'Downer','private' => '1']);
+        \App\Models\Family::factory(1)->create(['name' => 'Downer','public_access' => '1']);
         \App\Models\Family::factory(1)->create(['name' => 'Davidson']);
 
         \App\Models\User::factory(1)->create(['email' => 'cartman@a.com','family_id' => '1']);
