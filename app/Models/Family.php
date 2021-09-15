@@ -11,6 +11,6 @@ class Family extends Model
 
     protected $fillable = [
         'name',
+        'public_access',
     ];
-
 }

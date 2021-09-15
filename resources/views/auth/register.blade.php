@@ -66,6 +66,15 @@
                 </div>
             </div>
         </div>
+
+        <div class="col-md-6">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="Public">
+                <label class="form-check-label" for="invalidCheck">
+                    Allow Anyone to view (otherise access will be limited to your family only)
+                </label>
+            </div>
+        </div>
         <br>
         <input type="submit" value="Submit">
     </form>

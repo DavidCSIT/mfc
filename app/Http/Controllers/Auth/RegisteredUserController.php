@@ -43,8 +43,11 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
  
+        $publicAccess = isset($request->public) ? true : false;
+
         $family = Family::create([
             'name' => $request->family,
+            'public_access' => $publicAccess,
         ]);
 
         $user = User::create([

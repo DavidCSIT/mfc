@@ -17,7 +17,7 @@ class CreateFamiliesTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('image')->nullable();
-            $table->boolean('private');
+            $table->boolean('public_access');
             $table->timestamps();
         });
     }
