@@ -71,7 +71,7 @@
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="" id="Public">
                 <label class="form-check-label" for="invalidCheck">
-                    Allow Anyone to view (otherise access will be limited to your family only)
+                    Allow anyone to view your cookbook ? 
                 </label>
             </div>
         </div>
