@@ -4,9 +4,21 @@
 <div class="container container-xl top">
     @if(session('success'))
     <div class="alert alert-success">
-        {{ session('success') }}    
+        {{ session('success') }}
     </div>
     @endif
+
+    <h1>About Us</h1>
+
+    <p>
+        Food nourishes us, connects us and creates histories. Recipes are traditions and ways of doing and being that are handed down the generations and evolve across time and families.
+        At my family cookbook we wanted to capture our family traditions, strengthen our family memories and simply nourish this generation and the next. Creating an easy way for recipes to be passed through our family and into history.
+        Our grandmothers' recipes show their connection to their surroundings and the world in which they lived. Our children need the foundations for creating healthy meals and just as we have adapted our eating over time, the chance to share new ways with us oldies.
+        Whānau can be your biological family or simply a connected group of people.
+    </p>
+
+    <h1>Contact Us</h1>
+    <p>email Chef@myfamilycookbook.org or use the form below</p>
 
     <form method="POST" action="/contact">
         @csrf

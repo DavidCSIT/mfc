@@ -10,11 +10,13 @@
             @csrf
 
             <div class="row">
+                <!-- Email Address -->
                 <div class="col-md-6">
                     <div class="form-group">
                         <input name="email" type="text" class="form-control" placeholder="Email *" value="" />
                     </div>
                 </div>
+                <!-- Password -->
                 <div class="col-md-6">
                     <div class="form-group">
                         <input name="password" type="password" class="form-control" placeholder="Your Password *" value="" />
@@ -28,7 +30,8 @@
         <p>Forgot your password?</p>
 
         <a class="btn btn-light" href="{{ route('password.request') }}">Reset Password </a>
-     
+
+        <!-- Validation Errors -->
         @if ($errors->any())
         <div class="alert alert-danger mt-2">
             <ul>
@@ -40,6 +43,5 @@
         @endif
     </div>
 </div>
-
 
 @endsection

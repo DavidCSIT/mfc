@@ -18,6 +18,7 @@ class CreateFamiliesTable extends Migration
             $table->string('name');
             $table->string('image')->nullable();
             $table->boolean('public_access');
+            $table->string('family_code')->unique();
             $table->timestamps();
         });
     }

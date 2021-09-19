@@ -13,4 +13,8 @@ class Family extends Model
         'name',
         'public_access',
     ];
+
+    public function users(){
+        return $this->hasMany(User::class);
+    }
 }

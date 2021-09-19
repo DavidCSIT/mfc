@@ -1,21 +1,29 @@
 <?php
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\FamilyController;
 use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\Auth\RegisteredUserController;
 
 Route::get('/', [HomeController::class, 'index']);
 
 Route::resource('recipes', RecipeController::class)->except(['show'])->middleware(['auth', 'verified']);;
 Route::resource('recipes', RecipeController::class)->only(['show']);
 
-Route::get('/dashboard', function () { return view('welcome');});
+Route::resource('familys', FamilyController::class)->middleware(['auth', 'verified']);
+
 
 Route::get('/contact', [ContactController::class, 'contact'])->name('about');
 Route::post('/contact', [ContactController::class, 'contactPost'])->name('contactPost');
+
+Route::put('/users/{user}', [RegisteredUserController::class, 'update'])->name('updateUser')->middleware();
+Route::delete('/users/{user}', [RegisteredUserController::class, 'destroy'])->name('destroyUser')->middleware();
+Route::get('/users/invite', [RegisteredUserController::class, 'invite'])->name('invite')->middleware();
 
 require __DIR__.'/auth.php';
 
 // Route::get('/', function () { return view('welcome'); });
 // Route::resource('recipes', RecipeController::class)->only(['index','create','store','edit','store','update','destroy'])->middleware('auth');
 // Route::resource('recipes', RecipeController::class) ->middleware('auth');
+//Route::get('/dashboard', function () { return view('welcome');});

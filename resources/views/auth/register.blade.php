@@ -12,7 +12,7 @@
 
         <div class="col-md-6">
             <div class="form-group mt-2">
-                <input name="name" type="text" class="form-control" placeholder="Your Name *" value="" minlength="5" required>
+                <input name="name" type="text" class="form-control" placeholder="Your Name *" value="{{ @old('name') }}" minlength="2" required>
                 <div class="valid-feedback">
                     Looks good!
                 </div>
@@ -20,7 +20,7 @@
             </div>
 
             <div class="form-group mt-2">
-                <input name="email" type="email" class="form-control" placeholder="Email *" value="" minlength="5" required>
+                <input name="email" type="email" class="form-control" placeholder="Email *" value="{{ @old('email') }}" minlength="5" required>
                 <div class="valid-feedback">
                     Looks good!
                 </div>
@@ -47,17 +47,16 @@
         </div>
 
         <div class="form-group mt-2">
-            <input name="family" type="text" class="form-control" placeholder="Enter the Family name for your cookbook" value="" minlength="2" required>
+            <input name="family" type="text" class="form-control" placeholder="Enter the Family name for your cookbook" value="{{ @old('family') }}" minlength="2" required>
             <div class="valid-feedback">
                 Looks good!
             </div>
             <div class="invalid-feedback"> Please enter a valid family name. </div>
         </div>
 
-
         <div class="col-md-6">
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                <input class="form-check-input" type="checkbox" value="1" id="invalidCheck" name="invalidCheck"  {{ !empty(@old('invalidCheck')) ? 'checked' : '' }} required>
                 <label class="form-check-label" for="invalidCheck">
                     Agree to terms and conditions
                 </label>
@@ -68,9 +67,9 @@
         </div>
 
         <div class="col-md-6">
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="Public">
-                <label class="form-check-label" for="invalidCheck">
+            <div class="form-check2">
+                <input class="form-check-input" type="checkbox" value="1" id="public" name="public"  {{ !empty(@old('public')) ? 'checked' : '' }}  >
+                <label class="form-check-label" for="public">
                     Allow anyone to view your cookbook ? 
                 </label>
             </div>

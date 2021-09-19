@@ -36,6 +36,8 @@
                         <a href="{{ route('about') }}" class="btn btn-outline-success justify-content-end ">About</a>
                         @auth
                         <a href="/recipes" class="btn btn-outline-success">Recipes</a>
+                        <a href="/familys/{{ auth()->user()->family_id }}" class="btn btn-outline-success">Members</a>
+
                         <a href="{{ route('logout') }}" class="btn btn-outline-success  " onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();">Logout</a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -52,7 +54,7 @@
         </nav>
     </header>
 
-    <!-- will be used to show any messages -->
+    <!-- messages -->
     @if (Session::has('message'))
     <div class="alert alert-info">{{ Session::get('message') }}</div>
     @endif

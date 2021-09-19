@@ -27,8 +27,19 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        Gate::define('update-recipe' , function (User $user, Recipe $recipe){
+        Gate::define('update-recipe', function (User $user, Recipe $recipe) {
             return $recipe->user->is($user);
-          });
+        });
+
+        Gate::define('admin', function (User $user) {
+            return $user->admin;
+        });
+
+        Gate::define('admin-family', function (User $user, User $member) {
+            if ($user->admin  && $user->family_id == $member->family_id && $user->id != $member->id)
+                return true;
+            else
+                return false;
+        });
     }
 }

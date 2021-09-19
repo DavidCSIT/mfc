@@ -27,9 +27,10 @@ class DatabaseSeeder extends Seeder
         \App\Models\Family::factory(1)->create(['name' => 'Downer','public_access' => '1']);
         \App\Models\Family::factory(1)->create(['name' => 'Davidson']);
 
-        \App\Models\User::factory(1)->create(['email' => 'cartman@a.com','family_id' => '1']);
-        \App\Models\User::factory(1)->create(['email' => 'downer@a.com','family_id' => '2']);
-        \App\Models\User::factory(1)->create(['email' => 'davidson@a.com','family_id' => '3']);
+        \App\Models\User::factory(1)->create(['email' => 'cartman@a.com','family_id' => '1','admin' => '1']);
+        \App\Models\User::factory(1)->create(['email' => 'downer@a.com','family_id' => '2','admin' => '1']);
+        \App\Models\User::factory(1)->create(['email' => 'davidson@a.com','family_id' => '3','admin' => '1']);
+        \App\Models\User::factory(10)->create();
    
         \App\Models\Recipe::factory(1)->create(
             ['name' => 'Lamb and French  Lentil Salad',

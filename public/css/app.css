@@ -24,6 +24,10 @@
         Catamaran 
 */
 
+.btn-light {
+    background-color: #FFDDE2FF;
+}
+
 .clickable {
     cursor: pointer;
 }

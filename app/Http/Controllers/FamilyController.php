@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\URL;
 use App\Models\Family;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class FamilyController extends Controller
@@ -46,7 +48,10 @@ class FamilyController extends Controller
      */
     public function show(family $family)
     {
-        //
+        $members = $family->users;
+        $inviteLink = URL::signedRoute('invite', ['family' => $family->family_code]);
+      
+        return view('familys.show', ['family' => $family, 'members' =>$members, 'inviteLink' =>$inviteLink ]);
     }
 
     /**
