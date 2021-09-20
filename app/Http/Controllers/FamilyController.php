@@ -49,8 +49,8 @@ class FamilyController extends Controller
     public function show(family $family)
     {
         $members = $family->users;
-        $inviteLink = URL::signedRoute('invite', ['family' => $family->family_code]);
-      
+            //    $inviteLink = URL::signedRoute('invite', ['family' => $family->family_code]);
+        $inviteLink = URL::temporarySignedRoute('invite', now()->addDays(5), ['family' => $family->family_code]);
         return view('familys.show', ['family' => $family, 'members' =>$members, 'inviteLink' =>$inviteLink ]);
     }
 

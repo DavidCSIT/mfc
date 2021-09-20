@@ -54,7 +54,7 @@
   @can('admin')
   <h1>Secure Invite Link</h1>
   <p>Share this link with people who you would like to invite to contribute to your cookbook</p>  
-  <p>This link will expire</p>  
+  <p>This link will expire after 5 days</p>  
   <p>{{ $inviteLink}}    </p>
   @endcan
 
