@@ -4,6 +4,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\FamilyController;
 use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\StripeController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 
 Route::get('/', [HomeController::class, 'index']);
@@ -20,6 +21,10 @@ Route::post('/contact', [ContactController::class, 'contactPost'])->name('contac
 Route::put('/users/{user}', [RegisteredUserController::class, 'update'])->name('updateUser')->middleware();
 Route::delete('/users/{user}', [RegisteredUserController::class, 'destroy'])->name('destroyUser')->middleware();
 Route::get('/users/invite', [RegisteredUserController::class, 'invite'])->name('invite')->middleware();
+
+Route::get('stripe', [StripeController::class, 'create'])->name('stripe.create');
+Route::post('stripe', [StripeController::class, 'store'])->name('stripe.store');
+
 
 require __DIR__.'/auth.php';
 
