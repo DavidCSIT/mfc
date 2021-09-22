@@ -45,7 +45,7 @@
                      @endif
                      <form
                         role="form"
-                        action="{{ route('stripe.store') }}"
+                        action="{{ route('payments.store') }}"
                         method="post"
                         class="require-validation"
                         data-cc-on-file="false"
