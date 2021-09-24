@@ -37,6 +37,7 @@ class PaymentController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request);
         Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
         Stripe\Charge::create ([
                 "amount" => request('amount'),

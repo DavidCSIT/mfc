@@ -45,7 +45,7 @@
                      @endif
                      <form
                         role="form"
-                        action="{{ route('payments.store') }}"
+                        action="{{ route('stripe.store') }}"
                         method="post"
                         class="require-validation"
                         data-cc-on-file="false"
@@ -101,7 +101,7 @@
          </div>
       </div>
    </body>
-   <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+   <script src="https://js.stripe.com/v2/"></script>
    <script type="text/javascript">
       $(function() {
     var $form = $(".require-validation");
