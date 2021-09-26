@@ -24,11 +24,14 @@ class RegisteredUserController extends Controller
      */
     public function create(Request $request)
     {
-        return view('auth.register');
+         return view('auth.register');
     }
 
     public function invite(Request $request)
     {
+        if (! $request->hasValidSignature()) {
+            abort(401);
+        }
         return view('auth.invite', ['family_code' => $request->family]);
     }
 

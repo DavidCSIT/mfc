@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\URL;
-use App\Models\Family;
-use App\Models\User;
+use App\Models\Payment;
 use Illuminate\Http\Request;
+use Stripe;
+use Session;
 
-class FamilyController extends Controller
+class PaymentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -37,30 +37,42 @@ class FamilyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+        Stripe\Charge::create ([
+                "amount" => request('amount'),
+                "currency" => "usd",
+                "source" => $request->stripeToken,
+                "description" => "This payment is tested purpose"
+        ]);
+        
+        $payment = new Payment();
+        $payment->amount = $request->amount;
+        $payment->user_id = Auth::user()->id;
+        $payment->save();
+
+        Session::flash('success', 'Donation successful! Thank-you');
+           
+        return back();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\family  $family
+     * @param  \App\Models\Payement  $payement
      * @return \Illuminate\Http\Response
      */
-    public function show(family $family)
+    public function show(Payement $payement)
     {
-        $members = $family->users;
-            //    $inviteLink = URL::signedRoute('invite', ['family' => $family->family_code]);
-        $inviteLink = URL::temporarySignedRoute('invite', now()->addDays(5), ['family' => $family->family_code]);
-        return view('familys.show', ['family' => $family, 'members' =>$members, 'inviteLink' =>$inviteLink ]);
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\family  $family
+     * @param  \App\Models\Payement  $payement
      * @return \Illuminate\Http\Response
      */
-    public function edit(family $family)
+    public function edit(Payement $payement)
     {
         //
     }
@@ -69,10 +81,10 @@ class FamilyController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\family  $family
+     * @param  \App\Models\Payement  $payement
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, family $family)
+    public function update(Request $request, Payement $payement)
     {
         //
     }
@@ -80,10 +92,10 @@ class FamilyController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\family  $family
+     * @param  \App\Models\Payement  $payement
      * @return \Illuminate\Http\Response
      */
-    public function destroy(family $family)
+    public function destroy(Payement $payement)
     {
         //
     }

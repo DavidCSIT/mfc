@@ -31,6 +31,10 @@ class DatabaseSeeder extends Seeder
         \App\Models\User::factory(1)->create(['email' => 'downer@a.com','family_id' => '2','admin' => '1']);
         \App\Models\User::factory(1)->create(['email' => 'davidson@a.com','family_id' => '3','admin' => '1']);
         \App\Models\User::factory(10)->create();
+        
+        \App\Models\Comment::factory(10)->create();
+
+        \App\Models\Payment::factory(10)->create();
    
         \App\Models\Recipe::factory(1)->create(
             ['name' => 'Lamb and French  Lentil Salad',

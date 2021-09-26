@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\URL;
-use App\Models\Family;
-use App\Models\User;
+use App\Models\Comment;
 use Illuminate\Http\Request;
 
-class FamilyController extends Controller
+class CommentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +14,9 @@ class FamilyController extends Controller
      */
     public function index()
     {
-        //
+        $comments = Comment::all();
+    
+        return view('comments.index', ['comments' => $comments]) ;
     }
 
     /**
@@ -43,24 +43,21 @@ class FamilyController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\family  $family
+     * @param  \App\Models\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function show(family $family)
+    public function show(Comment $comment)
     {
-        $members = $family->users;
-            //    $inviteLink = URL::signedRoute('invite', ['family' => $family->family_code]);
-        $inviteLink = URL::temporarySignedRoute('invite', now()->addDays(5), ['family' => $family->family_code]);
-        return view('familys.show', ['family' => $family, 'members' =>$members, 'inviteLink' =>$inviteLink ]);
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\family  $family
+     * @param  \App\Models\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function edit(family $family)
+    public function edit(Comment $comment)
     {
         //
     }
@@ -69,10 +66,10 @@ class FamilyController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\family  $family
+     * @param  \App\Models\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, family $family)
+    public function update(Request $request, Comment $comment)
     {
         //
     }
@@ -80,10 +77,10 @@ class FamilyController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\family  $family
+     * @param  \App\Models\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(family $family)
+    public function destroy(Comment $comment)
     {
         //
     }
