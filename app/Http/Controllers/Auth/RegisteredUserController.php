@@ -42,7 +42,8 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request)
     {
-        if (isset($request->family)) {
+        // if (isset($request->family)) {
+        if ($request->has('family')) {
             $request->validate([
                 'name' => 'required|string|max:255',
                 'family' => 'required|string',
