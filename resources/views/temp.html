@@ -1,0 +1,38 @@
+<!-- Credit card form -->
+<section>
+    <form action="{{ url('payments') }}" method="post" id="payment-form">
+        @csrf
+        <div class="row mb-4">
+            <div class="col">
+                <div class="form-outline">
+                    <input type="text" id="name" class="form-control" />
+                    <label class="form-label" for="name">Name on card</label>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-outline">
+                    <input type="text" id="card_number" class="form-control" />
+                    <label class="form-label" for="card_number">Credit card number</label                    >
+                  </div>
+                </div>
+              </div>
+  
+              <div class="row mb-4">
+                <div class="col-3">
+                  <div class="form-outline">
+                    <input type="text" id="card_expiry" class="form-control" />
+                    <label class="form-label" for="card_expiry" class="form-control"">Expiration</label>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="form-outline">
+                    <input type="text" id="card_cvc" class="form-control" />
+                    <label class="form-label" for="card_cvc">CVV</label>
+                </div>
+            </div>
+        </div>
+
+        <button class="btn btn-primary btn-lg btn-block" type="submit">Donate </button>
+    </form>
+</section>
+<!-- Credit card form -->
