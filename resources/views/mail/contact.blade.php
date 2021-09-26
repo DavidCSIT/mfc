@@ -58,43 +58,21 @@
                 <p>{{ Session::get('success') }}</p>
             </div>
             @endif
-            <form role="form" action="{{ route('payments.store') }}" method="post" class="require-validation" data-cc-on-file="false" data-stripe-publishable-key="{{ env('STRIPE_KEY') }}" id="payment-form">
+            <form role="form" action="{{ route('payments.store') }}" method="post" id="payment-form">
                 @csrf
-                <div class='row'>
-                    <div class='col-xs-12 form-group required'>
-                        <label class='control-label'>Name on Card</label> <input class='form-control' size='4' type='text'>
+                <div class="form-row">
+                    <label for="card-element">
+                        Credit or debit card
+                    </label>
+                    <div id="card-element">
+                        <!-- A Stripe Element will be inserted here. -->
                     </div>
+
+                    <!-- Used to display Element errors. -->
+                    <div id="card-errors" role="alert"></div>
                 </div>
-                <div class='row'>
-                    <div class='col-xs-12 form-group required'>
-                        <label class='control-label'>Card Number 4242424242424242</label> <input autocomplete='off' class='form-control card-number' size='20' type='text'>
-                    </div>
-                </div>
-                <div class='row'>
-                    <div class='col-xs-12 col-md-4 form-group cvc required'>
-                        <label class='control-label'>CVC</label> <input autocomplete='off' class='form-control card-cvc' placeholder='ex. 311' size='4' type='text'>
-                    </div>
-                    <div class='col-xs-12 col-md-4 form-group expiration required'>
-                        <label class='control-label'>Expiration Month</label> <input class='form-control card-expiry-month' placeholder='MM' size='2' type='text'>
-                    </div>
-                    <div class='col-xs-12 col-md-4 form-group expiration required'>
-                        <label class='control-label'>Expiration Year</label> <input class='form-control card-expiry-year' placeholder='YYYY' size='4' type='text'>
-                    </div>
-                </div>
-                <div class='row'>
-                    <div class='error d-none col-md-12'>
-                        <div class='alert-danger alert '>Please correct the errors and try again. </div>
-                    </div>
-                </div>
-                <div class="row text-">
-                    <div class="col-xs-12 d-flex gap-2 ">
-                        <button class="btn btn-primary my-2 flex-fill" type="submit">Donate ($2)</button>
-                        <button class="btn btn-primary my-2 flex-fill" type="submit">Donate ($5)</button>
-                        <button class="btn btn-primary my-2 flex-fill" type="submit">Donate ($10)</button>
-                        <button class="btn btn-primary my-2 flex-fill" type="submit">Donate ($50)</button>
-                        <button class="btn btn-primary my-2 flex-fill" type="submit">Donate ($100)</button>
-                    </div>
-                </div>
+
+                <button>Submit Payment</button>F
             </form>
         </div>
     </div>
