@@ -13,7 +13,7 @@ Route::get('/', [HomeController::class, 'index']);
 
 
 Route::resource('recipes.comments', CommentController::class);
-// Route::get('recipes/{receipe}/comments', [CommentController::class, 'index'])->name('comment.index');
+Route::get('recipes/{receipe}/comments', [CommentController::class, 'index'])->name('comment.index');
 
 Route::resource('recipes', RecipeController::class)->except(['show'])->middleware(['auth', 'verified']);;
 Route::resource('recipes', RecipeController::class)->only(['show']);

@@ -49,6 +49,7 @@
           <div class="col">
             <h6 class="text-end">
               Recipe author {{$recipe->user->name}}
+              <p> Created @php echo ($recipe->created_at)->format('m/d/Y H:i') @endphp </p> 
             </h6>
           </div>
         </div>
