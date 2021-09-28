@@ -37,48 +37,57 @@
         <div class="col">
           <h1 class="text-center">
             @for ($i = 0; $i < $recipe->rating; $i++) * @endfor
-            <span style="color:darkgray">
-              @for ($i = $recipe->rating; $i < 5; $i++) * @endfor
-            </span>
-          </h1>
+              <span style="color:darkgray">
+                @for ($i = $recipe->rating; $i < 5; $i++) * @endfor </span> </h1> </div> </div> <div class="row">
+                  <div class="col text-center px-3">
+                    <h4>{{ $recipe->about }}</h4>
+                  </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col text-center px-3">
-          <h4>{{ $recipe->about }}</h4>
-        </div>
-      </div>
 
-      <br>
-      <div class="row">
-        <div class="col">
-          <h6 class="text-end">
-            Recipe author {{$recipe->user->name}}
-          </h6>
+        <br>
+        <div class="row">
+          <div class="col">
+            <h6 class="text-end">
+              Recipe author {{$recipe->user->name}}
+            </h6>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <div class="row row-margin m-m-top">
-    <div class="col-md-4 ">
-      <div class="card bg-light-pink">
-        <div class="card-body">
-          <h5 class="card-title">Ingredients</h5>
-          <h6 class="card-subtitle mb-2 text-muted">{!! nl2br(e($recipe->ingredients)) !!}</h6>
+    <div class="row row-margin m-m-top">
+      <div class="col-md-4 ">
+        <div class="card bg-light-pink">
+          <div class="card-body">
+            <h5 class="card-title">Ingredients</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{!! nl2br(e($recipe->ingredients)) !!}</h6>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-1">
+      </div>
+      <div class="col-md-7 m-m-top ">
+        <div class="card bg-light-pink">
+          <div class="card-body">
+            <h5 class="card-title">Steps</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{!! nl2br(e($recipe->steps)) !!}</h6>
+          </div>
         </div>
       </div>
     </div>
-    <div class="col-md-1">
-    </div>
-    <div class="col-md-7 m-m-top ">
-      <div class="card bg-light-pink">
-        <div class="card-body">
-          <h5 class="card-title">Steps</h5>
-          <h6 class="card-subtitle mb-2 text-muted">{!! nl2br(e($recipe->steps)) !!}</h6>
+    <br>
+    @foreach($recipe_comments as $recipe_comment)
+    <div class="row clickable " onclick="location.href='/recipes/{{$recipe->id}}/comments/{{$recipe_comment->id}}'">
+      <div class="col-md-7 m-m-top ">
+        <div class="card bg-light-pink">
+          <div class="card-body">
+            <h5 class="card-title">{{$recipe_comment->comment}}</h5>
+          </div>
         </div>
       </div>
     </div>
+    @endforeach
+
   </div>
 
   @endsection

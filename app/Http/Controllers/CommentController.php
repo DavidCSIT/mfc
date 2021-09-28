@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comment;
+use App\Models\Recipe;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
@@ -46,9 +47,9 @@ class CommentController extends Controller
      * @param  \App\Models\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function show(Comment $comment)
+    public function show(Recipe $recipe, Comment $comment)
     {
-        //
+       return view('comments.show', ['comment' => $comment]) ;
     }
 
     /**

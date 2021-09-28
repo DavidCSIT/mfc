@@ -1,6 +1,7 @@
-<link rel="stylesheet" href="{{ asset('/css/style.css') }}" />
+<link rel="stylesheet" href="{{ asset('/css/stripe.css') }}" />
 <script src="https://js.stripe.com/v3/"></script>
-<form action="{{ url('charge') }}" method="post" id="payment-form">
+<h1>pay</h1>
+<form action="{{ route('stripe.store') }}" method="post" id="payment-form">
     <div class="form-row">
         <p><input type="text" name="amount" placeholder="Enter Amount" /></p>
         <p><input type="email" name="email" placeholder="Enter Email" /></p>
@@ -18,6 +19,6 @@
     {{ csrf_field() }}
 </form>
 <script>
-var publishable_key = '{{ env('STRIPE_KEY') }}';
+   var publishable_key = "{{ env('STRIPE_KEY') }}";
 </script>
-<script src="{{ asset('/js/card.js') }}"></script>
+<script src="{{ asset('/js/stripe.js') }}"></script>

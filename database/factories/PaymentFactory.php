@@ -4,8 +4,9 @@ namespace Database\Factories;
 
 use App\Models\Payment;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
-class PayementFactory extends Factory
+class PaymentFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
@@ -22,7 +23,8 @@ class PayementFactory extends Factory
     public function definition()
     {
         return [
-            'amount' => $this->faker->randomDigit(),
+            'amount' => $this->faker->randomFloat(2,2),
+            'payment_id' => Str::random(20),
             'created_at' => now(),
             'updated_at' => now()
         ];

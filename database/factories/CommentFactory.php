@@ -23,6 +23,7 @@ class CommentFactory extends Factory
     {
         return [
             'comment' => $this->faker->sentence,
+            'recipe_id' => 1,
             'created_at' => now(),
             'updated_at' => now()
         ];

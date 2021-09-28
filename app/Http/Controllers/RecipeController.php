@@ -7,6 +7,7 @@ use App\Models\Meal;
 use App\Models\Cuisine;
 use App\Models\Family;
 use App\Models\User;
+use App\Models\Comment;
 
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
@@ -140,7 +141,10 @@ class RecipeController extends Controller
      */
     public function show(recipe $recipe)
     {
-        return view('recipes.show', ['recipe' => $recipe]);
+        $recipe_comments = Comment::where('recipe_id', "=", $recipe->id)->get();
+
+
+        return view('recipes.show', ['recipe' => $recipe, 'recipe_comments' => $recipe_comments]);
     }
 
     /**

@@ -32,7 +32,7 @@ class DatabaseSeeder extends Seeder
         \App\Models\User::factory(1)->create(['email' => 'davidson@a.com','family_id' => '3','admin' => '1']);
         \App\Models\User::factory(10)->create();
         
-        \App\Models\Comment::factory(10)->create();
+       
 
         \App\Models\Payment::factory(10)->create();
    
@@ -52,5 +52,6 @@ class DatabaseSeeder extends Seeder
         );
 
         \App\Models\Recipe::factory(20)->create();
+        \App\Models\Comment::factory(10)->create();
     }
 }
