@@ -143,7 +143,6 @@ class RecipeController extends Controller
     {
         $recipe_comments = Comment::where('recipe_id', "=", $recipe->id)->get();
 
-
         return view('recipes.show', ['recipe' => $recipe, 'recipe_comments' => $recipe_comments]);
     }
 

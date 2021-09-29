@@ -27,19 +27,27 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
+        // Recipie is my recipe
         Gate::define('update-recipe', function (User $user, Recipe $recipe) {
             return $recipe->user->is($user);
         });
 
+        // User is a admin of a family
         Gate::define('admin', function (User $user) {
             return $user->admin;
         });
 
+        // User is admin of another user
         Gate::define('admin-family', function (User $user, User $member) {
             if ($user->admin  && $user->family_id == $member->family_id && $user->id != $member->id)
                 return true;
             else
                 return false;
+        });
+
+        // Recipe is my family cookbook
+        Gate::define('Recipe-in-my-cookbook', function (User $user, Recipe $recipe) {
+            return $recipe->user->family->is($user->family);
         });
     }
 }

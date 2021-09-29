@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Comment;
 use App\Models\Recipe;
 use Illuminate\Http\Request;
+use Auth;
 
 class CommentController extends Controller
 {
@@ -25,9 +26,9 @@ class CommentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Recipe $recipe)
     {
-        //
+        return view('comments.create',['recipe' => $recipe]) ;
     }
 
     /**
@@ -36,9 +37,23 @@ class CommentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Recipe $recipe)
     {
-        //
+        if (! Gate::allows('update-recipe', $recipe)) {
+            abort(403);
+        }
+        
+        request()->validate([
+            'comment' => 'required',
+        ]);
+      
+        $comment = new Comment();
+        $comment->comment = request('comment');
+        $comment->recipe_id =  $recipe->id;
+        $comment->user_id =  Auth::user()->id;
+        $comment->save();
+
+        return redirect("/recipes/$recipe->id");
     }
 
     /**
