@@ -31,7 +31,6 @@
     </ul>
   </div>
   @endif
-ExceptionHandler
 
 </div>
 @endsection

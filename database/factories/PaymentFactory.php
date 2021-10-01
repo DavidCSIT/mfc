@@ -23,7 +23,7 @@ class PaymentFactory extends Factory
     public function definition()
     {
         return [
-            'amount' => $this->faker->randomFloat(2,2),
+            'amount' => $this->faker->randomFloat(2,0,10000),
             'payment_id' => Str::random(20),
             'created_at' => now(),
             'updated_at' => now()

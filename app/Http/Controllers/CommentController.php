@@ -6,6 +6,7 @@ use App\Models\Comment;
 use App\Models\Recipe;
 use Illuminate\Http\Request;
 use Auth;
+use Gate;
 
 class CommentController extends Controller
 {
@@ -96,8 +97,9 @@ class CommentController extends Controller
      * @param  \App\Models\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Comment $comment)
+    public function destroy(Recipe $recipe, Comment $comment)
     {
-        //
+        $comment->delete();
+        return redirect("recipes/$recipe->id");
     }
 }
