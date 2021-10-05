@@ -4,6 +4,9 @@
     </IfModule>
 
     RewriteEngine On
+    RewriteBase /
+    RewriteCond %{HTTP_HOST} ^35\.201\.2\.18$
+    RewriteRule ^(.*)$ http://myfamilycookbook.org/$1 [L,R=301]
 
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
@@ -17,5 +20,6 @@
     # Send Requests To Front Controller...
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteRule ^ index.php [L]
+    RewriteRule ^ index.php [L]  
+   
 </IfModule>
