@@ -4,17 +4,11 @@
    light G  #9ED9CCFF
    dark G   #008C76FF
    green    #198754
-<<<<<<< HEAD
+   
    font-family: 'Catamaran', sans-serif;
    font-family: 'Dancing Script', cursive;
    font-family: 'Rampart One', cursive;
 
-=======
-
-   font-family: 'Catamaran', sans-serif;
-   font-family: 'Dancing Script', cursive;
-   font-family: 'Rampart One', cursive;
->>>>>>> 2ea85a0edc9330e683cf81a29e2cdf7a298696b2
 */
 
 .btn-light {
@@ -67,10 +61,8 @@
 
 /* .m-left {
     /* margin-left: -12px; */
-/* } */ */
-
-
-}
+/* }  
+}*/
 */ .h1-margins {
     margin-bottom: 1rem;
     margin-top: 2rem;

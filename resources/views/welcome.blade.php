@@ -84,13 +84,13 @@
 <!-- Recipes -->
 <div class="container-xxl">
     @foreach($recipes as $recipe)
-    <h1 class="h1-margins">{{ $recipe->name }}</h1>
+    <h1 class="mt-4">{{ $recipe->name }}</h1>
 
     <div class="row clickable " onclick="location.href='/recipes/{{$recipe->id}}'">
         <div class="col-lg-7 bg-pink rounded-left   ">
             <img src="{{ $recipe->image_path }}" class="img-fluid rounded-left   " alt="...">
         </div>
-        <div class="col-lg-5 bg-pink m-left rounded-right m-m-top ">
+        <div class="col-lg-5 bg-pink rounded-right">
             <br>
             <div class="row">
                 <div class="col text-center">
@@ -104,7 +104,7 @@
                 </div>
             </div>
 
-            <div class="row ">
+            <div class="row">
                 <div class="col text-center ">
                     <h3>{{ $recipe->serves }}</h3>
                 </div>
@@ -131,8 +131,8 @@
             </div>
             <br>
             <div class="row">
-                <div class="col">
-                    <h6 class="text-end">
+                <div class="col me-2">
+                    <h6 class="text-end ">
                         Recipe author {{$recipe->user->name}}
                     </h6>
                 </div>
