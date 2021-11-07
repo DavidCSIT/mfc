@@ -23,12 +23,12 @@
 </head>
 
 <body>
-    <!-- Page Heading -->
+    <!-- Header -->
     <header>
-        <nav class="navbar fixed-top navbar-expand navbar-dark bg-dark">
+        <!-- <nav class="navbar fixed-top navbar-dark bg-dark">
             <div class="container">
                 <div class="justify-content-start">
-                    <a class="navbar-brand" href="/">My Family CookBook</a>
+                    <a class="navbar-brand" href="/">MyFamilyCookBook</a>
                 </div>
 
                 <div class="">
@@ -45,10 +45,38 @@
                         </form>
 
                         @else
+                        <a href="{{ route('register') }}" class="btn btn-outline-success justify-content-end ">SignUp</a>
+                       <a href="{{ route('login') }}" class="btn btn-outline-success justify-content-end ">Login</a> 
+                        @endauth
+                    </div>
+                </div>
+            </div>
+        </nav> -->
+
+
+        <nav class="navbar fixed-top navbar-dark bg-dark">
+            <div class="container-xl">
+                <a class="navbar-brand" href="#">My Family CookBook</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                    <form class="d-flex gap-2 d-md-flex justify-content-md-end">
+                        <a href="{{ route('about') }}" class="btn btn-outline-success justify-content-end ">About</a>
+                        @auth
+                        <a href="/recipes" class="btn btn-outline-success">Recipes</a>
+                        <a href="/familys/{{ auth()->user()->family_id }}" class="btn btn-outline-success">Members</a>
+
+                        <a href="{{ route('logout') }}" class="btn btn-outline-success  " onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">Logout</a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                        @else
                         <a href="{{ route('register') }}" class="btn btn-outline-success justify-content-end ">Sign Up</a>
                         <a href="{{ route('login') }}" class="btn btn-outline-success justify-content-end ">Login</a>
                         @endauth
-                    </div>
+                    </form>
                 </div>
             </div>
         </nav>

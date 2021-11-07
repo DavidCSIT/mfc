@@ -4,6 +4,7 @@
 <div class="container-xl top">
     <h1>{{ $recipe->name }}</h1>
 
+    <!-- Recipe -->
     <div class="row ">
         <div class="col-md-7  ">
             <img src="{{ $recipe->image_path }}" class="img-fluid rounded-left " alt="...">
@@ -12,13 +13,13 @@
             <br>
             <div class="row">
                 <div class="col text-center">
-                    <h7>Serves</h7>
+                    <h6>Serves</h6>
                 </div>
                 <div class="col text-center border-start">
-                    <h7>Prep Time</h7>
+                    <h6>Prep Time</h6>
                 </div>
                 <div class="col text-center border-start">
-                    <h7>Cook Time</h7>
+                    <h6>Cook Time</h6>
                 </div>
             </div>
 
@@ -38,81 +39,89 @@
                     <h1 class="text-center">
                         @for ($i = 0; $i < $recipe->rating; $i++) * @endfor
                             <span style="color:darkgray">
-                                @for ($i = $recipe->rating; $i < 5; $i++) * @endfor </span> </h1> </div> </div> <div class="row">
-                                    <div class="col text-center px-3">
-                                        <h4>{{ $recipe->about }}</h4>
-                                    </div>
+                                @for ($i = $recipe->rating; $i < 5; $i++) * @endfor </span>
+                    </h1>
                 </div>
+            </div>
+            <div class="row">
+                <div class="col text-center px-3">
+                    <h4>{{ $recipe->about }}</h4>
+                </div>
+            </div>
 
-                <br>
-                <div class="row">
-                    <div class="col">
-                        <h6 class="text-end">
-                            Author {{ $recipe->user->name }}
-                            <p> <i> Created @php echo ($recipe->created_at)->format('m/d/Y') @endphp </i> </p>
-                        </h6>
-                    </div>
+            <br>
+            <div class="row">
+                <div class="col">
+                    <p class="text-end">
+                        <b> Author {{ $recipe->user->name }} </b>
+                        <br>
+                        <i> Created @php echo ($recipe->created_at)->format('m/d/Y') @endphp </i>
+                    </p>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    <div class="row row-margin m-m-top">
-        <div class="col-md-4 ">
-            <div class="card bg-light-pink">
-                <div class="card-body">
-                    <h5 class="card-title">Ingredients</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">{!! nl2br(e($recipe->ingredients)) !!}</h6>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-1">
-        </div>
-        <div class="col-md-7 m-m-top ">
-            <div class="card bg-light-pink">
-                <div class="card-body">
-                    <h5 class="card-title">Steps</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">{!! nl2br(e($recipe->steps)) !!}</h6>
-                </div>
+<div class="row row-margin m-m-top">
+    <!-- Ingredients -->
+    <div class="col-md-4 ">
+        <div class="card bg-light-pink">
+            <div class="card-body">
+                <h5 class="card-title">Ingredients</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{!! nl2br(e($recipe->ingredients)) !!}</h6>
             </div>
         </div>
     </div>
-    <br>
+    <div class="col-md-1">
+    </div>
 
-    <div class="container">
-        @auth
-        @can('Recipe-in-my-cookbook', $recipe)
-        <a class="mt-1 mx-auto btn btn-small btn-info" href="/recipes/{{ $recipe->id }}/comments/create">Comment </a>
-        @endcan
-        @endauth
+    <!-- Steps -->
+    <div class="col-md-7 m-m-top ">
+        <div class="card bg-light-pink">
+            <div class="card-body">
+                <h5 class="card-title">Steps</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{!! nl2br(e($recipe->steps)) !!}</h6>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
 
-        @php $right = false; @endphp
-        @foreach ($recipe_comments as $recipe_comment)
-        <div class="row mt-2 ">
-            <div class="d-flex  @if ($right) justify-content-end @endif ">
-                <div class=" card bg-dark ">
-                    <div class=" card-body">
-                        <h5 class="card-title"> {{ $recipe_comment->comment }} </h5>
-                        <div class="card-content row">
-                            <div class="col-6">
-                                @can('Delete-Comment', $recipe_comment)
-                                <form action="/recipes/{{ $recipe->id }}/comments/{{ $recipe_comment->id }}" method="POST">
-                                    @method('DELETE')
+<!-- Comments -->
+<div class="container">
+    @auth
+    @can('Recipe-in-my-cookbook', $recipe)
+    <a class="mt-1 mx-auto btn btn-small btn-info" href="/recipes/{{ $recipe->id }}/comments/create">Comment </a>
+    @endcan
+    @endauth
 
-                                    @csrf
-                                    <button type="submit" title="delete" class="mt-1 mx-auto btn btn-small btn-danger">Delete </button>
+    @php $right = false; @endphp
+    @foreach ($recipe_comments as $recipe_comment)
+    <div class="row mt-2 ">
+        <div class="d-flex  @if ($right) justify-content-end @endif ">
+            <div class=" card bg-dark ">
+                <div class=" card-body">
+                    <h5 class="card-title"> {{ $recipe_comment->comment }} </h5>
+                    <div class="card-content row">
+                        <div class="col-6">
+                            @can('Delete-Comment', $recipe_comment)
+                            <form action="/recipes/{{ $recipe->id }}/comments/{{ $recipe_comment->id }}" method="POST">
+                                @method('DELETE')
 
-                                </form>
-                                @endcan
-                            </div>
-                            <h6 class="col-6 d-flex justify-content-end mt-2"> {{ $recipe_comment->user->name }} </h6>
-                            @php $right = !$right; @endphp
+                                @csrf
+                                <button type="submit" title="delete" class="mt-1 mx-auto btn btn-small btn-danger">Delete </button>
+
+                            </form>
+                            @endcan
                         </div>
+                        <h6 class="col-6 d-flex justify-content-end mt-2"> {{ $recipe_comment->user->name }} </h6>
+                        @php $right = !$right; @endphp
                     </div>
                 </div>
             </div>
         </div>
-        @endforeach
     </div>
+    @endforeach
 </div>
 @endsection

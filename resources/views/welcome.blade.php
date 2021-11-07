@@ -1,19 +1,18 @@
 @extends('layouts.app')
 @section('content')
 
-
 <!-- Background header image -->
 <div class="home py-5 d-flex  ">
     <div class="container text-light ">
-        <br> <br>
-        <h4 class="hero-box" id="search" >Share your recipes your way</h4>
-        <h4 class="hero-box">Cook and Connect today</h4>  
+        <h4 class="hero-box mt-5" id="search">Share your recipes your way</h4>
+        <h4 class="hero-box">Cook and connect today</h4>
         <h4 class="hero-box">History for generations</h4>
     </div>
 </div>
-<!-- Background header image -->
+
+<!-- Search -->
 <div class="container-xxl">
-    <form method="GET" action="#search" enctype="multipart/form-data" class="row gy-2 gx-3 align-items-center mt-1">
+    <form method="GET" action="#search" enctype="multipart/form-data" class="row gy-2 gx-3 align-items-center mt-1 mb-5">
 
         <div class="row justify-content-center mt-4">
             <div class="col-lg-auto mt-2 col-2 ">
@@ -79,14 +78,13 @@
                 </select>
             </div>
         </div>
-
-
     </form>
+</div>
 
-
+<!-- Recipes -->
+<div class="container-xxl">
     @foreach($recipes as $recipe)
     <h1 class="h1-margins">{{ $recipe->name }}</h1>
-
 
     <div class="row clickable " onclick="location.href='/recipes/{{$recipe->id}}'">
         <div class="col-lg-7 bg-pink rounded-left   ">
@@ -96,13 +94,13 @@
             <br>
             <div class="row">
                 <div class="col text-center">
-                    <h7>Serves</h7>
+                    <h6>Serves</h6>
                 </div>
                 <div class="col text-center border-start">
-                    <h7>Prep Time</h7>
+                    <h6>Prep Time</h6>
                 </div>
                 <div class="col text-center border-start">
-                    <h7>Cook Time</h7>
+                    <h6>Cook Time</h6>
                 </div>
             </div>
 
@@ -140,13 +138,7 @@
                 </div>
             </div>
         </div>
-        </a>
     </div>
-
-    <div class="top">
-
-    </div>
-
     @endforeach
-
-    @endsection
+</div>
+@endsection
