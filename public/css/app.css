@@ -3,25 +3,11 @@
    orange   #FAA094FF
    light G  #9ED9CCFF
    dark G   #008C76FF
-   g        #198754
+   green    #198754
    font-family: 'Catamaran', sans-serif;
    font-family: 'Dancing Script', cursive;
    font-family: 'Rampart One', cursive;
 
-   heading fonts 
-        Rampart One 
-        Special Elite
-        Press Start 2P
-
-        handwriting fonts 
-        Dancing Script 
-        Allison 
-        Parisienne
-
-        plan fonts 
-        Mukta
-        Indie Flower 
-        Catamaran 
 */
 
 .btn-light {
@@ -73,7 +59,7 @@
 
 /* .m-left {
     /* margin-left: -12px; */
-} */
+/* } */ */
 
 .h1-margins {
     margin-bottom: 1rem;

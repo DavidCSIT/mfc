@@ -96,7 +96,7 @@
             <p>Bitcoin is a secure and digital currency. You can send BTC to the following address and optionally let us know using the form below:</p>
             <div>
                 <div class="d-flex-sm mb-3">
-                    <strong class="p-2"> 38WBMr9qwq8zXrUatBGK1sapWZiKmbj8vA </strong> 
+                    <strong class="p-2"> bc1qnzdx0yft9rx9zwgxnvzu9yxxmuzul9hc9tlzha </strong> 
                     <img src="{{ asset('img/bitcoin.png') }}" class="ml-2">
                 </div>
 

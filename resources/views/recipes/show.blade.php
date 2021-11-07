@@ -4,7 +4,7 @@
 <div class="container-xl top">
     <h1>{{ $recipe->name }}</h1>
 
-    <div class="row ">
+    <div class="row">
         <div class="col-md-7  ">
             <img src="{{ $recipe->image_path }}" class="img-fluid rounded-left " alt="...">
         </div>
@@ -55,64 +55,64 @@
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="row row-margin m-m-top">
-        <div class="col-md-4 ">
-            <div class="card bg-light-pink">
-                <div class="card-body">
-                    <h5 class="card-title">Ingredients</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">{!! nl2br(e($recipe->ingredients)) !!}</h6>
+
+        <div class="row row-margin m-m-top">
+            <div class="col-md-4 ">
+                <div class="card bg-light-pink">
+                    <div class="card-body">
+                        <h5 class="card-title">Ingredients</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">{!! nl2br(e($recipe->ingredients)) !!}</h6>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-1">
-        </div>
-        <div class="col-md-7 m-m-top ">
-            <div class="card bg-light-pink">
-                <div class="card-body">
-                    <h5 class="card-title">Steps</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">{!! nl2br(e($recipe->steps)) !!}</h6>
-                </div>
+            <div class="col-md-1">
             </div>
-        </div>
-    </div>
-    <br>
-
-    <div class="container">
-        @auth
-        @can('Recipe-in-my-cookbook', $recipe)
-        <a class="mt-1 mx-auto btn btn-small btn-info" href="/recipes/{{ $recipe->id }}/comments/create">Comment </a>
-        @endcan
-        @endauth
-
-        @php $right = false; @endphp
-        @foreach ($recipe_comments as $recipe_comment)
-        <div class="row mt-2 ">
-            <div class="d-flex  @if ($right) justify-content-end @endif ">
-                <div class=" card bg-dark ">
-                    <div class=" card-body">
-                        <h5 class="card-title"> {{ $recipe_comment->comment }} </h5>
-                        <div class="card-content row">
-                            <div class="col-6">
-                                @can('Delete-Comment', $recipe_comment)
-                                <form action="/recipes/{{ $recipe->id }}/comments/{{ $recipe_comment->id }}" method="POST">
-                                    @method('DELETE')
-
-                                    @csrf
-                                    <button type="submit" title="delete" class="mt-1 mx-auto btn btn-small btn-danger">Delete </button>
-
-                                </form>
-                                @endcan
-                            </div>
-                            <h6 class="col-6 d-flex justify-content-end mt-2"> {{ $recipe_comment->user->name }} </h6>
-                            @php $right = !$right; @endphp
-                        </div>
+            <div class="col-md-7 m-m-top ">
+                <div class="card bg-light-pink">
+                    <div class="card-body">
+                        <h5 class="card-title">Steps</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">{!! nl2br(e($recipe->steps)) !!}</h6>
                     </div>
                 </div>
             </div>
         </div>
-        @endforeach
+        <br>
+
+        <div class="container">
+            @auth
+            @can('Recipe-in-my-cookbook', $recipe)
+            <a class="mt-1 mx-auto btn btn-small btn-info" href="/recipes/{{ $recipe->id }}/comments/create">Comment </a>
+            @endcan
+            @endauth
+
+            @php $right = false; @endphp
+            @foreach ($recipe_comments as $recipe_comment)
+            <div class="row mt-2">
+                <div class="d-flex  @if ($right) justify-content-end @endif ">
+                    <div class=" card bg-dark ">
+                        <div class=" card-body">
+                            <h4 class="card-title"> {{ $recipe_comment->comment }} </h4>
+                            <div class="card-content row">
+                                <div class="col-6">
+                                    @can('Delete-Comment', $recipe_comment)
+                                    <form action="/recipes/{{ $recipe->id }}/comments/{{ $recipe_comment->id }}" method="POST">
+                                        @method('DELETE')
+
+                                        @csrf
+                                        <button type="submit" title="delete" class="mt-1 mx-auto btn btn-small btn-danger">Delete </button>
+
+                                    </form>
+                                    @endcan
+                                </div>
+                                <h6 class="col-6 d-flex justify-content-end mt-2"> {{ $recipe_comment->user->name }} </h6>
+                                @php $right = !$right; @endphp
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+        </div>
     </div>
-</div>
-@endsection
+    @endsection
