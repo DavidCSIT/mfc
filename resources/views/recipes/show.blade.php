@@ -4,7 +4,12 @@
 <div class="container-xl top">
     <h1>{{ $recipe->name }}</h1>
 
+<<<<<<< HEAD
     <div class="row">
+=======
+    <!-- Recipe -->
+    <div class="row ">
+>>>>>>> 2ea85a0edc9330e683cf81a29e2cdf7a298696b2
         <div class="col-md-7  ">
             <img src="{{ $recipe->image_path }}" class="img-fluid rounded-left " alt="...">
         </div>
@@ -12,13 +17,13 @@
             <br>
             <div class="row">
                 <div class="col text-center">
-                    <h7>Serves</h7>
+                    <h6>Serves</h6>
                 </div>
                 <div class="col text-center border-start">
-                    <h7>Prep Time</h7>
+                    <h6>Prep Time</h6>
                 </div>
                 <div class="col text-center border-start">
-                    <h7>Cook Time</h7>
+                    <h6>Cook Time</h6>
                 </div>
             </div>
 
@@ -38,20 +43,24 @@
                     <h1 class="text-center">
                         @for ($i = 0; $i < $recipe->rating; $i++) * @endfor
                             <span style="color:darkgray">
-                                @for ($i = $recipe->rating; $i < 5; $i++) * @endfor </span> </h1> </div> </div> <div class="row">
-                                    <div class="col text-center px-3">
-                                        <h4>{{ $recipe->about }}</h4>
-                                    </div>
+                                @for ($i = $recipe->rating; $i < 5; $i++) * @endfor </span>
+                    </h1>
                 </div>
+            </div>
+            <div class="row">
+                <div class="col text-center px-3">
+                    <h4>{{ $recipe->about }}</h4>
+                </div>
+            </div>
 
-                <br>
-                <div class="row">
-                    <div class="col">
-                        <h6 class="text-end">
-                            Author {{ $recipe->user->name }}
-                            <p> <i> Created @php echo ($recipe->created_at)->format('m/d/Y') @endphp </i> </p>
-                        </h6>
-                    </div>
+            <br>
+            <div class="row">
+                <div class="col">
+                    <p class="text-end">
+                        <b> Author {{ $recipe->user->name }} </b>
+                        <br>
+                        <i> Created @php echo ($recipe->created_at)->format('m/d/Y') @endphp </i>
+                    </p>
                 </div>
             </div>
         </div>
@@ -109,10 +118,18 @@
                                 @php $right = !$right; @endphp
                             </div>
                         </div>
+                        <h6 class="col-6 d-flex justify-content-end mt-2"> {{ $recipe_comment->user->name }} </h6>
+                        @php $right = !$right; @endphp
                     </div>
                 </div>
             </div>
             @endforeach
         </div>
     </div>
+<<<<<<< HEAD
     @endsection
+=======
+    @endforeach
+</div>
+@endsection
+>>>>>>> 2ea85a0edc9330e683cf81a29e2cdf7a298696b2

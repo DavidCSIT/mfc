@@ -1,12 +1,13 @@
 @extends('layouts.app')
 @section('content')
 
+<!-- Page Heading and Search -->
 <div class="container-xl top">
 
     <form method="GET" action="/recipes" enctype="multipart/form-data" class="row gy-2 gx-3 align-items-center mt-2 ">
-     
-         <h1 class="me-3">Our Family Recipes</h1>
-     
+
+        <h1 class="me-3">Our Family Recipes</h1>
+
         <div class="col-lg-auto col-6 mt-3  ">
             <a href="/recipes/create" class="btn btn-outline-success mb-2 ms-4">New Recipe</a>
         </div>
@@ -74,17 +75,19 @@
             </select>
         </div>
     </form>
+</div>
 
+<!-- Recipes -->
+<div class="container-xl">
     @foreach($recipes as $recipe)
-    <h1 class="h1-margins">{{ $recipe->name }}</h1>
+    <h1 class="mt-4">{{ $recipe->name }}</h1>
 
     <div class="row ">
         <div class="col-lg-7 bg-pink rounded-left  ">
             <img src="{{ $recipe->image_path }}" class="img-fluid rounded-left   " alt="...">
         </div>
         <div class="col-lg-5 bg-pink m-left rounded-right m-m-top ">
-            <br>
-            <div class="row">
+            <div class="row mt-4">
                 <div class="col text-center">
                     <h7>Serves</h7>
                 </div>
@@ -131,12 +134,12 @@
                         <a class="mt-1 mx-auto btn btn-small btn-success " href="recipes/{{$recipe->id}}">Show</a>
 
                         @auth
-                            @can('update-recipe', $recipe)
-                                <a class="mt-1 mx-auto btn btn-small btn-info" href="recipes/{{$recipe->id}}/edit">Edit </a>
+                        @can('update-recipe', $recipe)
+                        <a class="mt-1 mx-auto btn btn-small btn-info" href="recipes/{{$recipe->id}}/edit">Edit </a>
 
-                                @csrf
-                                <button type="submit" title="delete" class="mt-1 mx-auto btn btn-small btn-danger">Delete </button>
-                            @endcan
+                        @csrf
+                        <button type="submit" title="delete" class="mt-1 mx-auto btn btn-small btn-danger">Delete </button>
+                        @endcan
                         @endauth
                 </div>
                 <div class="col">
@@ -148,7 +151,6 @@
             </form>
         </div>
     </div>
-
     @endforeach
 
 </div>
