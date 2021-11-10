@@ -33,7 +33,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                     <form class="d-flex gap-2 d-md-flex mt-2 justify-content-md-end">
-                        <a href="{{ route('about') }}" class="btn btn-outline-success justify-content-end ">About</a>
+                        <a href="{{ route('contact') }}" class="btn btn-outline-success justify-content-end ">Contact</a>
                         @auth
                         <a href="/recipes" class="btn btn-outline-success">Recipes</a>
                         <a href="/familys/{{ auth()->user()->family_id }}" class="btn btn-outline-success">Members</a>

@@ -59,11 +59,11 @@
 }
 
 
-/* .m-left {
-    /* margin-left: -12px; */
-/* }  
-}*/
-*/ .h1-margins {
+.m-left {
+    margin-left: -12px;
+}
+
+.h1-margins {
     margin-bottom: 1rem;
     margin-top: 2rem;
 }
@@ -119,10 +119,20 @@ h6 {
     height: 600px;
 }
 @media only screen and (max-width: 992px) {
-    /* For mobile phones: */
-    
+    /* For small screen */
+
+    row {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .row-margin {
+        margin: 0;
+    }
+
     h1 {
-        font-size: 2rem
+        font-size: 2rem;
+        text-align: center;
     }
     
     h4 {
@@ -136,6 +146,7 @@ h6 {
     
     .m-left {
         margin-left: 0;
+        margin-right: 0;
     }
     
     .top {
@@ -158,10 +169,6 @@ h6 {
     .bg-pink {
         padding: 0;
     }
-}
-@media only screen and (max-width: 760px) {
-    /* For mobile phones: */
-    
     .navbar-dark .navbar-brand {
         font-size: 1rem;
     }

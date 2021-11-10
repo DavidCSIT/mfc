@@ -24,16 +24,14 @@ class DatabaseSeeder extends Seeder
         \App\Models\Cuisine::factory(1)->create(['name' => 'Mexican']);
         
         \App\Models\Family::factory(1)->create(['name' => 'Cartman']);
-        \App\Models\Family::factory(1)->create(['name' => 'Downer','public_access' => '1']);
-        \App\Models\Family::factory(1)->create(['name' => 'Davidson']);
+        \App\Models\Family::factory(1)->create(['name' => 'Marsh','public_access' => '1']);
+        \App\Models\Family::factory(1)->create(['name' => 'Broflovski']);
 
-        \App\Models\User::factory(1)->create(['email' => 'cartman@a.com','family_id' => '1','admin' => '1']);
-        \App\Models\User::factory(1)->create(['email' => 'downer@a.com','family_id' => '2','admin' => '1']);
-        \App\Models\User::factory(1)->create(['email' => 'davidson@a.com','family_id' => '3','admin' => '1']);
+        \App\Models\User::factory(1)->create(['email' => 'a@a.com','family_id' => '1','admin' => '1']);
+        \App\Models\User::factory(1)->create(['email' => 'b@b.com','family_id' => '2','admin' => '1']);
+        \App\Models\User::factory(1)->create(['email' => 'c@c.com','family_id' => '3','admin' => '1']);
         \App\Models\User::factory(10)->create();
         
-       
-
         \App\Models\Payment::factory(10)->create();
    
         \App\Models\Recipe::factory(1)->create(

@@ -2,7 +2,7 @@
 @section('content')
 
 <div class="container-xl container-xl top">
-  <h1>What do think</h1>
+  <h1>What do you think?</h1>
 
   <form method="POST" action="/recipes/{{$recipe->id}}/comments" enctype="multipart/form-data" class="needs-validation" novalidate>
     @csrf

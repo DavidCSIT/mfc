@@ -29,9 +29,14 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        // Recipe is my recipe
+        // Recipe is my recipe or user is admin of my family
         Gate::define('update-recipe', function (User $user, Recipe $recipe) {
-            return $recipe->user->is($user);
+            if ($recipe->user->is($user))
+                return true;
+            else if ($user->admin  && $recipe->user->family->is($user->family))
+                return true;
+            else
+                return false;
         });
 
         // User is a admin of a family

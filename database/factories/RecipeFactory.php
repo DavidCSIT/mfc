@@ -26,7 +26,7 @@ class RecipeFactory extends Factory
             'name' => $this->faker->foodName(),
             'about' => $this->faker->paragraph,
             'image' => 'meal.jpg',
-            'image_path' => '/img/meal' . $this->faker->numberBetween(1, 4) . ".jpg",
+            'image_path' => '/img/meal' . $this->faker->numberBetween(1, 3) . ".jpg",
             'serves' => $this->faker->randomDigit,
             'rating' => $this->faker->numberBetween(1, 4),
             'prepTime' => $this->faker->numberBetween(5, 15),

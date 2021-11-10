@@ -14,8 +14,6 @@
           <input class="form-control input @error('name') is-invalid @enderror" type="text" name="name" value="{{ @old('name') }}" id="name" placeholder="Recipe name" minlength="2" required>
         </div>
       </div>
-
-
       <div class="custom-file field form-group col-md-6 ">
         <label for="image">Image</label>
         <div class="control">
@@ -25,17 +23,14 @@
     </div>
 
     <div class="row">
-
       <div class="form-group col-md-4 col-xl-2">
         <label for="prepTime">Prep Time (mins)</label> </label>
         <input type="text" class="form-control @error('prepTime') is-invalid @enderror" id="prepTime" name="prepTime" value="{{ @old('prepTime') }}" required>
       </div>
-
       <div class="form-group col-md-4 col-xl-2">
         <label for="cookTime">Cook Time (mins)</label> </label>
         <input type="text" class="form-control @error('cookTime') is-invalid @enderror" id="cookTime" name="cookTime" value="{{ @old('cookTime') }}" required>
       </div>
-
       <div class="field form-group col-md-4 col-xl-2">
         <label for="serves">Serves</label>
         <div class="control">
@@ -44,7 +39,6 @@
           </select>
         </div>
       </div>
-
       <div class="form-group col-md-4 col-xl-2">
         <label for="rating">Rating</label>
         <select class="form-control @error('rating') is-invalid @enderror" id="rating" name="rating">
@@ -55,7 +49,6 @@
           <option>5</option>
         </select>
       </div>
-
       <div class="form-group col-md-4 col-xl-2">
         <label for="meal">Meal</label>
         <select class="form-control @error('meal') is-invalid @enderror" id="meal" name="meal">
@@ -64,7 +57,6 @@
           @endforeach
         </select>
       </div>
-
       <div class="form-group col-md-4 col-xl-2">
         <label for="cuisine">Cuisine</label>
         <select class="form-control @error('cuisine') is-invalid @enderror" id="cuisine" name="cuisine">
@@ -103,8 +95,5 @@
   </div>
   @endif
 
-
 </div>
-
-
 @endsection

@@ -20,9 +20,8 @@ class HomeController extends Controller
         $familys = Family::where( 'public_access',1)->get();
 
         $search = [];
-        // $serves = isset($request->serves) ? $request->serves : 0;
-        $serves = $request->query('serves',0);
 
+        $serves = $request->query('serves',0);
         $rating = isset($request->rating) ? $request->rating : 0;
         $oldCuisine = isset($request->cuisine) ? $request->cuisine : 0;
         $oldMeal = isset($request->meal) ? $request->meal : 0;

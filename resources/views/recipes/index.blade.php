@@ -126,7 +126,7 @@
             </div>
 
             <br>
-            <div class="row ms-2">
+            <div class="row ms-2 mb-1">
                 <div class="col">
                     <form action="recipes/{{$recipe->id}}" method="POST">
                         @method('DELETE')
@@ -143,7 +143,7 @@
                         @endauth
                 </div>
                 <div class="col">
-                    <h6 class="text-end">
+                    <h6 class="text-end me-1">
                         Recipe chef {{$recipe->user->name}}
                     </h6>
                 </div>
@@ -152,6 +152,5 @@
         </div>
     </div>
     @endforeach
-
 </div>
 @endsection

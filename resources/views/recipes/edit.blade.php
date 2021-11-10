@@ -8,14 +8,13 @@
     @method('PUT')
     @csrf
 
-    <div class="row ">
+    <div class="row">
       <div class="field form-group col-md-6 ">
         <label for="name">Name</label>
         <div class="control">
-          <input class="form-control input @error('name') is-invalid @enderror" type="text" name="name" value="{{$recipe->name}}" id="name" placeholder="Recipe name" minlength="2" required>
+          <input class="form-control input @error('name') is-invalid @enderror" type="text" name="name" value="{{$recipe->name}}" id="name" placeholder="Recipe name" minlength="1" required>
         </div>
       </div>
-
 
       <div class="custom-file field form-group col-md-6 ">
         <label for="image">New Image</label>
@@ -26,7 +25,6 @@
     </div>
 
     <div class="row">
-
       <div class="form-group col-md-4 col-xl-2">
         <label for="prepTime">Prep Time (mins)</label> </label>
         <input type="text" class="form-control @error('prepTime') is-invalid @enderror" id="prepTime" name="prepTime" value="{{$recipe->prepTime}}" required>
@@ -41,7 +39,7 @@
         <label for="serves">Serves</label>
         <div class="control">
           <select class="form-control input @error('rating') is-invalid @enderror" id="serves" name="serves">
-            @for ($i = 1; $i <= 10; $i++) <option {{ $recipe->serves == $i ? 'selected' : '' }}>{{$i}}</option> @endfor        
+            @for ($i = 1; $i <= 10; $i++) <option {{ $recipe->serves == $i ? 'selected' : '' }}>{{$i}}</option> @endfor
           </select>
         </div>
       </div>
@@ -49,9 +47,8 @@
       <div class="form-group col-md-4 col-xl-2">
         <label for="rating">Rating</label>
         <select class="form-control @error('rating') is-invalid @enderror" id="rating" name="rating">
-          @for ($i = 1; $i <= 5; $i++)
-          <option {{ $recipe->rating == $i ? 'selected' : '' }}>{{$i}}</option> 
-          @endfor  
+          @for ($i = 1; $i <= 5; $i++) <option {{ $recipe->rating == $i ? 'selected' : '' }}>{{$i}}</option>
+            @endfor
         </select>
       </div>
 
@@ -59,7 +56,7 @@
         <label for="meal">Meal</label>
         <select class="form-control @error('meal') is-invalid @enderror" id="meal" name="meal">
           @foreach ($meals as $meal)
-          <option {{ $recipe->meal_id == $meal->id ? 'selected' : '' }}  value="{{$meal->id}}"> {{$meal->name}} </option>
+          <option {{ $recipe->meal_id == $meal->id ? 'selected' : '' }} value="{{$meal->id}}"> {{$meal->name}} </option>
           @endforeach
         </select>
       </div>
@@ -68,7 +65,7 @@
         <label for="cuisine">Cuisine</label>
         <select class="form-control @error('cuisine') is-invalid @enderror" id="cuisine" name="cuisine">
           @foreach ($cuisines as $cuisine)
-          <option {{ $recipe->cuisine_id == $cuisine->id ? 'selected' : '' }}  value="{{$cuisine->id}}"> {{$cuisine->name}} </option>
+          <option {{ $recipe->cuisine_id == $cuisine->id ? 'selected' : '' }} value="{{$cuisine->id}}"> {{$cuisine->name}} </option>
           @endforeach
         </select>
       </div>
@@ -102,8 +99,5 @@
   </div>
   @endif
 
-
 </div>
-
-
 @endsection
