@@ -45,7 +45,6 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request)
     {
-        // if (isset($request->family)) {
         if ($request->has('family')) {
             $request->validate([
                 'name' => 'required|string|max:255',
@@ -87,10 +86,12 @@ class RegisteredUserController extends Controller
     
         }
 
-
         event(new Registered($user));
 
         Auth::login($user);
+
+        // $this->notify('$user->name registered');
+    );
 
         return redirect(RouteServiceProvider::HOME);
     }
@@ -116,6 +117,23 @@ class RegisteredUserController extends Controller
 
         Recipe::where('user_id', $user->id)->update(['user_id' => Auth::id()]);
         $user->delete();
+    
         return redirect('/familys/' . auth::user()->family_id);
     }
+    public function notify(string $message)
+    {
+        Mail::send(
+            'mail.emailnotify',
+            [
+                'message' => $message
+            ],
+            function ($message) {
+                $message->from('chief@myfamilycookbook.org');
+                $message->to('chief@myfamilycookbook.org', 'Chief')
+                    ->subject('New User Notification');
+            }
+        );
+    }
+
+
 }

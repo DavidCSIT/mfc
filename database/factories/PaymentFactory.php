@@ -25,6 +25,7 @@ class PaymentFactory extends Factory
         return [
             'amount' => $this->faker->randomFloat(2,0,10000),
             'payment_id' => Str::random(20),
+            'currency' => 'USD',
             'created_at' => now(),
             'updated_at' => now()
         ];

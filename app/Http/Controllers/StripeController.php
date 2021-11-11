@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Omnipay\Omnipay;
 use App\Models\User;
 use App\Models\Payment;
-
+use Mail;
 
 class StripeController extends Controller
 {
@@ -42,9 +44,20 @@ class StripeController extends Controller
                     $payment = new Payment;
                     $payment->payment_id = $arr_payment_data['id'];
                     $payment->amount = $arr_payment_data['amount']/100;
+                    $payment->currency = 'USD';
+
+                    if (Auth::check()) {
+                        $payment->user_id = Auth::user()->id;
+                    }
+
+                    if ($request->input('email')) {
+                        $payment->email =  request('email');
+                    }
+
                     $payment->save();
                 }
-  
+                // $this->notify('donation of $payment->amount USD revceived');
+
                 return "Donation is successful. Your payment id is: ". $arr_payment_data['id'];
             } else {
                 // payment failed: display message to customer
@@ -53,7 +66,43 @@ class StripeController extends Controller
         }
         // Bitcoin Donation
         else{
+            $payment = new Payment;
+
+            $payment->currency = 'BTC';
+
+            if (Auth::check()) {
+                $payment->user_id = Auth::user()->id;
+            }
+
+            if ($request->input('email')) {
+                $payment->email =  request('email');
+            }
+
+            
+            if ($request->input('amount')) {
+                $payment->amount =  request('amount');
+            }
+            $payment->payment_id = Str::random(20);
+            $payment->save();
+
+            // $this->notify('donation of $payment->amount BTC revceived');
+
             return "Donation recorded";
         }
+        
+    }
+    public function notify(string $message)
+    {
+        Mail::send(
+            'mail.emailnotify',
+            [
+                'message' => $message
+            ],
+            function ($message) {
+                $message->from('chief@myfamilycookbook.org');
+                $message->to('chief@myfamilycookbook.org', 'Chief')
+                    ->subject('Notification');
+            }
+        );
     }
 }

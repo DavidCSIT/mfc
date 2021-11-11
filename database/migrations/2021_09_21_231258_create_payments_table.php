@@ -17,6 +17,8 @@ class CreatePaymentsTable extends Migration
             $table->id();
             $table->string('payment_id');
             $table->float('amount', 10, 2);
+            $table->string('currency');
+            $table->string('email')->nullable();
             $table->foreignId('user_id')->nullable()->constrained();
             $table->timestamps();
         });
