@@ -120,19 +120,21 @@ class RegisteredUserController extends Controller
     
         return redirect('/familys/' . auth::user()->family_id);
     }
-    public function notify(string $message)
+    public function notify(string $msg)
     {
         Mail::send(
-            'mail.emailnotify',
+            'mail.email',
             [
-                'message' => $message
+                    'name' => 'chief',
+                    'email' => 'chief@myfamilycookbook.org',
+                    'comment' => 'new user'
             ],
             function ($message) {
-                $message->from('chief@myfamilycookbook.org');
-                $message->to('chief@myfamilycookbook.org', 'Chief')
-                    ->subject('New User Notification');
+                    $message->from('chief@myfamilycookbook.org');
+                    $message->to('chief@myfamilycookbook.org', 'Chief')
+                            ->subject('New User');
             }
-        );
+    );
     }
 
 
