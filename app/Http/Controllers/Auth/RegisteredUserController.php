@@ -14,6 +14,8 @@ use Illuminate\Validation\Rules;
 use Illuminate\Support\Facades\Gate;
 use App\Models\Family;
 use App\Models\Recipe;
+use Mail;
+
 
 class RegisteredUserController extends Controller
 {
