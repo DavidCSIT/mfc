@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Omnipay\Omnipay;
 use Illuminate\Http\Request;
 use Mail;
 

@@ -56,7 +56,7 @@ class StripeController extends Controller
 
                     $payment->save();
                 }
-                // $this->notify('donation of $payment->amount USD revceived');
+                // $this->notify('donation of $payment->amount USD received');
 
                 return "Donation is successful. Your payment id is: ". $arr_payment_data['id'];
             } else {
@@ -85,18 +85,18 @@ class StripeController extends Controller
             $payment->payment_id = Str::random(20);
             $payment->save();
 
-            // $this->notify('donation of $payment->amount BTC revceived');
+            // $this->notify('donation of $payment->amount BTC received');
 
             return "Donation recorded";
         }
         
     }
-    public function notify(string $message)
+    public function notify(string $msg)
     {
         Mail::send(
             'mail.emailnotify',
             [
-                'message' => $message
+                'message' => "received"
             ],
             function ($message) {
                 $message->from('chief@myfamilycookbook.org');
