@@ -90,9 +90,8 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        // $this->notify('$user->name registered');
-    );
-
+        $this->notify('$user->name registered');
+    
         return redirect(RouteServiceProvider::HOME);
     }
 
@@ -136,6 +135,4 @@ class RegisteredUserController extends Controller
             }
     );
     }
-
-
 }

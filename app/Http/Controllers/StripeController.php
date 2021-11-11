@@ -85,7 +85,7 @@ class StripeController extends Controller
             $payment->payment_id = Str::random(20);
             $payment->save();
 
-            // $this->notify('donation of $payment->amount BTC received');
+            $this->notify('donation of $payment->amount BTC received');
 
             return "Donation recorded";
         }
