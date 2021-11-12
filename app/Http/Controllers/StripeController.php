@@ -91,18 +91,19 @@ class StripeController extends Controller
         }
         
     }
-    public function notify(string $msg)
+    public function notify(user $user)
     {
         Mail::send(
             'mail.emailnotify',
             [
-                'message' => "received"
+                    'name' => $user->name,
+                    'email' => $user->name
             ],
             function ($message) {
-                $message->from('chief@myfamilycookbook.org');
-                $message->to('chief@myfamilycookbook.org', 'Chief')
-                    ->subject('Notification');
+                    $message->from('chief@myfamilycookbook.org');
+                    $message->to('chief@myfamilycookbook.org', 'Chief')
+                            ->subject('Donation');
             }
-        );
+    );
     }
 }

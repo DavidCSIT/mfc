@@ -99,7 +99,7 @@ class RecipeController extends Controller
     {
         request()->validate([
             'name' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg|max:3000',
+            'image' => 'required|image|mimes:jpeg,png,jpg|max:5000',
             'serves' => 'required',
             'rating' => 'required',
             'about' => 'required',
@@ -112,7 +112,8 @@ class RecipeController extends Controller
         ]);
 
         $imageName = time() . '.' . $request->image->extension();
-        $request->image->move(public_path('images'), $imageName);
+        $request->file('image')->move(public_path('images'), $imageName);
+        //$path = $request->image->store('images');
 
         $recipe = new Recipe();
         $recipe->name = request('name');
@@ -120,6 +121,7 @@ class RecipeController extends Controller
         $recipe->serves = request('serves');
         $recipe->image =  request('image');
         $recipe->image_path =  "/images/" . $imageName;
+        // $recipe->image_path =  $path;
         $recipe->rating =  request('rating');
         $recipe->cookTime =  request('cookTime');
         $recipe->prepTime =  request('prepTime');
@@ -190,7 +192,7 @@ class RecipeController extends Controller
 
         if(isset($request->image)) {
             $imageName = time() . '.' . $request->image->extension();
-            $request->image->move(public_path('images'), $imageName);
+            $request->file('image')->move(public_path('images'), $imageName);
             $recipe->image =  request('image');
             $recipe->image_path =  "/images/" . $imageName;
         }
