@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
         \App\Models\Cuisine::factory(1)->create(['name' => 'Asia']);
         \App\Models\Cuisine::factory(1)->create(['name' => 'Mexican']);
         
-        \App\Models\Family::factory(1)->create(['name' => 'Cartman']);
+        \App\Models\Family::factory(1)->create(['name' => 'Cartman','public_access' => '1']);
         \App\Models\Family::factory(1)->create(['name' => 'Marsh','public_access' => '1']);
         \App\Models\Family::factory(1)->create(['name' => 'Broflovski']);
 

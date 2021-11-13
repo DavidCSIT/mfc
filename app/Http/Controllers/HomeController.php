@@ -54,7 +54,7 @@ class HomeController extends Controller
             $servesFrom = 5;
         }
 
-        $search['families.public_access'] = 0;
+        $search['families.public_access'] = 1;
         // $recipes = DB::table('recipes')
         //     ->join('users', 'users.id', '=', 'recipes.user_id' )
         //     ->where('users.family_id','=', 1)
