@@ -26,9 +26,8 @@ class RecipeController extends Controller
     {
         $meals = Meal::all();
         $cuisines = Cuisine::all();
-        $family = Family::all();
-        $chefs = User::all();
-
+        $chefs = User::where('users.family_id','=', Auth::user()->family_id )->get();
+                     
         $search = [];
         $serves = isset($request->serves) ? $request->serves : 0;
         $rating = isset($request->rating) ? $request->rating : 0;
