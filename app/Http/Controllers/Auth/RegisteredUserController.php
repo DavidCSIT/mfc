@@ -126,12 +126,12 @@ class RegisteredUserController extends Controller
         Mail::send(
             'mail.emailnotify',
             [
-                    'comment' => $comment
+                    'comment' => $comment                    
             ],
             function ($message) {
                     $message->from('chief@myfamilycookbook.org');
                     $message->to('chief@myfamilycookbook.org', 'Chief')
-                            ->subject('New User');
+                            ->subject('Notification');
             }
     );
     }
