@@ -1,17 +1,18 @@
 @extends('layouts.app')
 @section('content')
 
+
+<section class="container top">
+
 @if (Session::has('success'))
 <div class="alert alert-success text-center">
-    <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+    <a href="#" class="close" data-dismiss="alert" aria-label="close"></a>
     <p>{{ Session::get('success') }}</p>
 </div>
 @endif
 
 <!-- Our Mission -->
-<section class="container top">
     <h1>Our Mission</h1>
-
     <p>
         Food nourishes us, connects us and creates histories. Recipes are traditions and ways of doing and being that
         are handed down the generations and evolve across time and families.

@@ -56,12 +56,14 @@ class StripeController extends Controller
 
                     $payment->save();
                 }
-                // $this->notify('donation of $payment->amount USD received');
+                $this->notify("$payment->amount");
 
-                return "Donation is successful. Your payment id is: ". $arr_payment_data['id'];
+                return back()->with('success', "Thank you! Your payment id is " . $arr_payment_data['id']);
+
             } else {
                 // payment failed: display message to customer
                 return $response->getMessage();
+                
             }     
         }
         // Bitcoin Donation
@@ -85,24 +87,23 @@ class StripeController extends Controller
             $payment->payment_id = Str::random(20);
             $payment->save();
 
-            $this->notify('donation of $payment->amount BTC received');
+            $this->notify("See you at $payment->amount");
 
-            return "Donation recorded";
+            return back()->with('success', 'Thank you for your donation!');
         }
         
     }
-    public function notify(user $user)
+    public function notify(string $comment)
     {
         Mail::send(
             'mail.emailnotify',
             [
-                    'name' => $user->name,
-                    'email' => $user->name
+                    'comment' => $comment                    
             ],
             function ($message) {
                     $message->from('chief@myfamilycookbook.org');
                     $message->to('chief@myfamilycookbook.org', 'Chief')
-                            ->subject('Donation');
+                            ->subject('Notification');
             }
     );
     }
