@@ -92,7 +92,7 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        $this->notify($user);
+        $this->notify("New user $user->name $user->email");
     
         return redirect(RouteServiceProvider::HOME);
     }
@@ -121,13 +121,12 @@ class RegisteredUserController extends Controller
     
         return redirect('/familys/' . auth::user()->family_id);
     }
-    public function notify(user $user)
+    public function notify(string $comment)
     {
         Mail::send(
             'mail.emailnotify',
             [
-                    'name' => $user->name,
-                    'email' => $user->name
+                    'comment' => $comment
             ],
             function ($message) {
                     $message->from('chief@myfamilycookbook.org');
