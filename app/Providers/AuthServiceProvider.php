@@ -57,21 +57,24 @@ class AuthServiceProvider extends ServiceProvider
             return $recipe->user->family->is($user->family);
         });
 
+        // Recipe has public access
+        Gate::define('recipe-public', function (User $user, Recipe $recipe) {            
+            return $recipe->user->family->public_access ;
+        });
+
         // Can delete comments 
         Gate::define('Delete-Comment', function (User $user, Comment $comment) {
-             //my comment         
+            //my comment         
             if ($user->id == $comment->user->id)
                 return true;
             //my recipe
             elseif ($user->id == $comment->recipe->user_id)
-                 return true;
+                return true;
             // user is admin
             elseif ($user->admin && $user->family_id == $comment->user->family_id)
                 return true;
             else
                 return false;
-            
-
         });
     }
 }

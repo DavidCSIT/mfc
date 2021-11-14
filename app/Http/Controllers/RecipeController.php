@@ -142,10 +142,14 @@ class RecipeController extends Controller
      */
     public function show(recipe $recipe)
     {
-        $recipe_comments = Comment::where('recipe_id', "=", $recipe->id)->get();
-
-        return view('recipes.show', ['recipe' => $recipe, 'recipe_comments' => $recipe_comments]);
-    }
+        if ( Gate::allows('Recipe-in-my-cookbook', $recipe) ||  Gate::allows('recipe-public', $recipe)    ) {
+            $recipe_comments = Comment::where('recipe_id', "=", $recipe->id)->get();
+            return view('recipes.show', ['recipe' => $recipe, 'recipe_comments' => $recipe_comments]);
+        }
+        else {
+            abort(403);
+        }      
+     }
 
     /**
      * Show the form for editing the specified resource.
