@@ -67,6 +67,7 @@ class RegisteredUserController extends Controller
                 'name' => $request->name,
                 'family_id' => $family->id,
                 'email' => $request->email,
+                'admin' => true,
                 'password' => Hash::make($request->password),
             ]);
         } else {
