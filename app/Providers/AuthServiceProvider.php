@@ -58,7 +58,7 @@ class AuthServiceProvider extends ServiceProvider
         });
 
         // Recipe has public access
-        Gate::define('recipe-public', function (User $user, Recipe $recipe) {            
+        Gate::define('recipe-public', function (?User $user, Recipe $recipe) {            
             return $recipe->user->family->public_access ;
         });
 
