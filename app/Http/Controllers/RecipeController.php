@@ -177,7 +177,7 @@ class RecipeController extends Controller
      */
     public function update(Request $request, recipe $recipe)
     {
-        if (! Gate::allows('Recipe-in-my-cookbook', $recipe)) {
+        if (! Gate::allows('update-recipe', $recipe)) {
             abort(403);
         }
         request()->validate([

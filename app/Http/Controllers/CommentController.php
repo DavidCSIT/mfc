@@ -40,7 +40,7 @@ class CommentController extends Controller
      */
     public function store(Request $request, Recipe $recipe)
     {
-        if (! Gate::allows('update-recipe', $recipe)) {
+        if (! Gate::allows('Recipe-in-my-cookbook', $recipe)) {
             abort(403);
         }
         
