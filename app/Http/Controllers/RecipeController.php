@@ -25,7 +25,7 @@ class RecipeController extends Controller
     public function index(Request $request)
     {
         $meals = Meal::all();
-        $cuisines = Cuisine::all();
+        $cuisines = Cuisine::orderBy('name', 'asc')->get();
         $chefs = User::where('users.family_id','=', Auth::user()->family_id )->get();
                      
         $search = [];
@@ -82,10 +82,10 @@ class RecipeController extends Controller
      */
     public function create()
     {
-        $meal = Meal::all();
-        $cuisine = Cuisine::all();
+        $meals = Meal::all(); 
+        $cuisines = Cuisine::orderBy('name', 'asc')->get();
         $family = Family::all();
-        return view('recipes.create', ['meals' => $meal, 'cuisines' => $cuisine]);
+        return view('recipes.create', ['meals' => $meals, 'cuisines' => $cuisines]);
     }
 
     /**

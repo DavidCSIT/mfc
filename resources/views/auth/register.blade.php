@@ -3,9 +3,14 @@
 
 <div class="container form top">
 
-    <h1>Sign up a new family</h1>
+    <h1>Create a new family cookbook</h1>
     
-    <h3>Note: If you want to join an existing family cookbook, ask the manager to send you an invite</h3>
+    <p>Start a new family cookbook to manager how you want!</p>
+    <p>As the administrator you invite others to join using a secure link </p>
+    <p>As the administrator you accept responsbility for the content in your cookbook </p>
+    <p>As the administrator you decide if the cookbook private to your family only or public read only</p>
+   
+    <h4>Note: If you want to join an existing family cookbook, ask the manager to send you an invite</h4>
 
     <form method="POST" action="{{ route('register') }}" class="row g-3 needs-validation" novalidate>
         @csrf

@@ -16,7 +16,6 @@ use App\Models\Family;
 use App\Models\Recipe;
 use Mail;
 
-
 class RegisteredUserController extends Controller
 {
     /**
@@ -130,8 +129,8 @@ class RegisteredUserController extends Controller
                     'comment' => $comment                    
             ],
             function ($message) {
-                    $message->from('chief@myfamilycookbook.org');
-                    $message->to('chief@myfamilycookbook.org', 'Chief')
+                    $message->from('chef@myfamilycookbook.org');
+                    $message->to('chef@myfamilycookbook.org', 'Chief')
                             ->subject('Notification');
             }
     );
