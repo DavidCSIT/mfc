@@ -5,7 +5,7 @@
 
     <h1>Create a new family cookbook</h1>
     
-    <p>Start a new family cookbook to manager how you want!</p>
+    <p>Start a new family cookbook to manage how you want!</p>
     <p>As the administrator you invite others to join using a secure link </p>
     <p>As the administrator you accept responsbility for the content in your cookbook </p>
     <p>As the administrator you decide if the cookbook private to your family only or public read only</p>
