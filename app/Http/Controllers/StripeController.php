@@ -28,6 +28,7 @@ class StripeController extends Controller
             $token = $request->input('stripeToken');
            
             $response = $gateway->purchase([
+                'headers' => ['Content-Type' => 'application/x-www-form-urlencoded'],
                 'amount' => $request->input('amount'),
                 'currency' => 'USD',
                 'token' => $token,

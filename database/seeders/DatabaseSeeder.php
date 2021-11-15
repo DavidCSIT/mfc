@@ -30,6 +30,8 @@ class DatabaseSeeder extends Seeder
         \App\Models\Cuisine::factory(1)->create(['name' => 'Pacifica']);
         \App\Models\Cuisine::factory(1)->create(['name' => 'Fusion']);
         \App\Models\Cuisine::factory(1)->create(['name' => 'Global']);
+        \App\Models\Cuisine::factory(1)->create(['name' => 'Student']);
+        \App\Models\Cuisine::factory(1)->create(['name' => 'Baking']);
         
         // \App\Models\Family::factory(1)->create(['name' => 'Cartman','public_access' => '1']);
         \App\Models\Family::factory(1)->create(['name' => 'Marsh','public_access' => '1']);
