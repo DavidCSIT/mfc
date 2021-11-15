@@ -16,7 +16,7 @@ class HomeController extends Controller
     public function index(Request $request )
     {
         $meals = Meal::all();
-        $cuisines = Cuisine::all();
+        $cuisines = Cuisine::orderBy('name', 'asc')->get();
         $familys = Family::where( 'public_access',1)->get();
 
         $search = [];
