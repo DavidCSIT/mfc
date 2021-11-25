@@ -47,7 +47,6 @@
 
 .bg-pink {
     background-color: #FAA094FF;
-    padding-left: 0px;
 }
 
 .bg-light-pink {
@@ -58,59 +57,60 @@
     margin-top: 85px;
 }
 
-
-.m-left {
-    margin-left: -12px;
-}
-
 .h1-margins {
     margin-bottom: 1rem;
     margin-top: 2rem;
 }
-h1,
-.h1,
-h4,
-h5 {
+
+h1, .h1, h4, h5 {
     font-family: 'Dancing Script', cursive;
     color: #008C76FF;
     font-size: 3rem;
 }
-h4,
-h5 {
+
+h4, h5 {
     font-size: 1.6rem;
 }
+
 h2 {
     font-family: 'Catamaran', sans-serif;
     font-weight: 800;
     color: #008C76FF;
 }
+
 h3 {
     font-family: 'Catamaran', sans-serif;
     color: black
 }
+
 h6 {
     font-weight: 400;
 }
+
 .bg-dark {
     background-color: #9ED9CCFF!important;
 }
+
 .navbar-dark .navbar-brand {
     color: #198754;
     font-family: 'Rampart One', cursive;
     font-size: 2rem;
     white-space: normal;
 }
+
 .btn-outline-success {
     white-space: nowrap;
 }
-.navbar-dark .navbar-nav .nav-link.active,
-.navbar-dark .navbar-nav .show>.nav-link {
+
+.navbar-dark .navbar-nav .nav-link.active, .navbar-dark .navbar-nav .show>.nav-link {
     color: green;
 }
+
 .navbar-dark .navbar-toggler {
     color: rgba(255, 255, 255, .55);
     /* border-color: rgba(255,255,255,.1); */
 }
+
 .home {
     background-image: url("/img/welcomebw2.jpg");
     background-size: cover;
@@ -118,63 +118,55 @@ h6 {
     background-attachment: fixed;
     height: 600px;
 }
+
+@media screen and (min-width: 993px) {
+    .bg-pink {
+        background-color: #FAA094FF;
+        padding-left: 0px;
+    }
+    .m-left {
+        margin-left: -12px;
+    }
+}
+
 @media only screen and (max-width: 992px) {
     /* For small screen */
-
-    row {
-        margin-left: 0;
-        margin-right: 0;
-    }
-
-    .row-margin {
-        margin: 0;
-    }
-
     h1 {
         font-size: 2rem;
         text-align: center;
     }
-    
     h4 {
         font-size: 1.2rem;
     }
-    
-    h3,
-    h6 {
+    h3, h6 {
         font-size: 1rem;
     }
-    
-    .m-left {
-        margin-left: 0;
-        margin-right: 0;
-    }
-    
     .top {
         margin-top: 60px;
     }
-    
     .m-m-top {
         margin-top: 15px;
     }
-    
     .rounded-left {
         border-radius: 2%;
+        padding: 0;
     }
-    
     .rounded-right {
         border-top-right-radius: 0 0;
         border-bottom-right-radius: 0 0;
     }
-    
-    .bg-pink {
-        padding: 0;
-    }
     .navbar-dark .navbar-brand {
         font-size: 1rem;
+    }
+    .btn-lg {
+        padding: 0.25rem 0.5rem;
+        font-size: .875rem;
+        border-radius: 0.2rem;
     }
 }
 
 /* Stripe */
+
 .StripeElement {
     box-sizing: border-box;
     height: 40px;
@@ -186,12 +178,15 @@ h6 {
     -webkit-transition: box-shadow 150ms ease;
     transition: box-shadow 150ms ease;
 }
+
 .StripeElement--focus {
     box-shadow: 0 1px 3px 0 #cfd7df;
 }
+
 .StripeElement--invalid {
     border-color: #fa755a;
 }
+
 .StripeElement--webkit-autofill {
     background-color: #fefde5 !important;
 }

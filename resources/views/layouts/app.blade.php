@@ -33,16 +33,16 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                     <form class="d-flex gap-2 d-md-flex mt-2 justify-content-md-end">
-                        <a href="{{ route('contact') }}" class="btn btn-outline-success justify-content-end ">Contact</a>
+                        <a href="{{ route('contact') }}" class="btn btn-lg btn-outline-success justify-content-end ">Contact</a>
                         @auth
-                        <a href="/recipes" class="btn btn-outline-success">Recipes</a>
-                        <a href="/familys/{{ auth()->user()->family_id }}" class="btn btn-outline-success">Members</a>
+                        <a href="/recipes" class="btn btn-lg btn-outline-success">Recipes</a>
+                        <a href="/familys/{{ auth()->user()->family_id }}" class="btn btn-lg btn-outline-success">Members</a>
 
-                        <a href="{{ route('logout') }}" class="btn btn-outline-success  " onclick="event.preventDefault();
+                        <a href="{{ route('logout') }}" class="btn btn-lg btn-outline-success  " onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();">Logout</a>
                         @else
-                        <a href="{{ route('register') }}" class="btn btn-outline-success justify-content-end ">Sign Up</a>
-                        <a href="{{ route('login') }}" class="btn btn-outline-success justify-content-end ">Login</a>
+                        <a href="{{ route('register') }}" class="btn btn-lg btn-outline-success btn-lg justify-content-end ">Sign Up</a>
+                        <a href="{{ route('login') }}" class="btn btn-lg btn-outline-success justify-content-end ">Login</a>
                         @endauth
                     </form>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

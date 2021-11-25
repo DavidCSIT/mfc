@@ -88,11 +88,10 @@
 
     <div class="row clickable " onclick="location.href='/recipes/{{$recipe->id}}'">
         <div class="col-lg-7 bg-pink rounded-left   ">
-            <img src="{{ $recipe->image_path }}" class="img-fluid rounded-left   " alt="...">
+            <img src="{{ $recipe->image_path }}" class="img-fluid rounded-left " alt="...">
         </div>
-        <div class="col-lg-5 bg-pink rounded-right">
-            <br>
-            <div class="row">
+        <div class="col-lg-5 bg-pink rounded-right ">
+            <div class="row mt-2 mr-0 ">
                 <div class="col text-center">
                     <h6>Serves</h6>
                 </div>
@@ -120,25 +119,22 @@
                     <h1 class="text-center">
                         @for ($i = 0; $i < $recipe->rating; $i++) * @endfor
                             <span style="color:darkgray">
-                                @for ($i = $recipe->rating; $i < 5; $i++) * @endfor </span>
-                    </h1>
+                                @for ($i = $recipe->rating; $i < 5; $i++) * @endfor </span> </h1> </div> </div> <div class="row">
+                                    <div class="col text-center px-3">
+                                        <h4>{{ $recipe->about }}</h4>
+                                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col text-center px-3">
-                    <h4>{{ $recipe->about }}</h4>
-                </div>
-            </div>
-            <br>
-            <div class="row">
-                <div class="col me-2">
-                    <h6 class="text-end ">
-                        Recipe author {{$recipe->user->name}}
-                    </h6>
+                <br>
+                <div class="row">
+                    <div class="col me-2">
+                        <h6 class="text-end ">
+                            Recipe author {{$recipe->user->name}}
+                        </h6>
+                    </div>
                 </div>
             </div>
         </div>
+        @endforeach
     </div>
-    @endforeach
-</div>
-@endsection
+
+    @endsection
