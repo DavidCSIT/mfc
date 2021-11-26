@@ -1,7 +1,6 @@
 @extends('layouts.app')
 @section('content')
 
-
 <section class="container top">
 
 @if (Session::has('success'))
@@ -9,6 +8,16 @@
     <a href="#" class="close" data-dismiss="alert" aria-label="close"></a>
     <p>{{ Session::get('success') }}</p>
 </div>
+@endif
+
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
 @endif
 
 <!-- Our Mission -->
@@ -25,6 +34,7 @@
         Whānau can be your biological family or simply a connected group of people.
     </p>
 </section>
+
 
 <!-- Contact Us-->
 <section class="container mt-4">
@@ -49,15 +59,6 @@
 
         <button type="submit" class="btn btn-primary my-2">Send Message</button>
     </form>
-    @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-    @endif
 </section>
 
 <!-- Donate cc  -->
