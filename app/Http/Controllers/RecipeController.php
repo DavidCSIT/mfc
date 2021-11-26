@@ -97,17 +97,17 @@ class RecipeController extends Controller
     public function store(Request $request)
     {
         request()->validate([
-            'name' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg|max:5000',
+            'name' => 'required|max:30',
+            'image' => 'required|image|mimes:jpeg,png,jpg|max:3000',
             'serves' => 'required',
             'rating' => 'required',
-            'about' => 'required',
+            'about' => 'required|max:300',
             'prepTime' => 'required|integer',
             'cookTime' => 'required|integer',
             'meal' => 'required|integer',
             'cuisine' => 'required|integer',
-            'ingredients' => 'required',
-            'steps' => 'required'
+            'ingredients' => 'required|max:1000',
+            'steps' => 'required|max:1000'
         ]);
 
         $imageName = time() . '.' . $request->image->extension();
@@ -181,16 +181,17 @@ class RecipeController extends Controller
             abort(403);
         }
         request()->validate([
-            'name' => 'required',
+            'name' => 'required|max:30',
+            'image' => 'image|mimes:jpeg,png,jpg|max:3000',
             'serves' => 'required',
             'rating' => 'required',
-            'about' => 'required',
+            'about' => 'required|max:300',
             'prepTime' => 'required|integer',
             'cookTime' => 'required|integer',
             'meal' => 'required|integer',
             'cuisine' => 'required|integer',
-            'ingredients' => 'required',
-            'steps' => 'required'
+            'ingredients' => 'required|max:1000',
+            'steps' => 'required|max:1000'
         ]);
 
         if(isset($request->image)) {

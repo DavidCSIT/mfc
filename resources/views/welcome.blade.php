@@ -128,7 +128,7 @@
                 <div class="row">
                     <div class="col me-2">
                         <h6 class="text-end ">
-                            Recipe author {{$recipe->user->name}}
+                            Chef {{$recipe->user->name}}
                         </h6>
                     </div>
                 </div>
