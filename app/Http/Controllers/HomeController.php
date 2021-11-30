@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-use Auth;
+use Illuminate\Support\Facades\Auth;
+// use Auth;
 
 use Illuminate\Http\Request;
 use App\Models\Recipe;
@@ -15,17 +16,31 @@ class HomeController extends Controller
 {
     public function index(Request $request )
     {
+   
         $meals = Meal::all();
         $cuisines = Cuisine::orderBy('name', 'asc')->get();
         $familys = Family::where( 'public_access',1)->get();
 
         $search = [];
 
+        if (isset($request->family)){
+                $selectedFamily = $request->family;
+                $search['users.family_id'] = $request->family;
+        }
+        elseif (Auth::check()){
+            $selectedFamily = Auth::user()->family_id;
+            $search['users.family_id'] = Auth::user()->family_id;        
+        }
+        else {
+            $selectedFamily = 1;
+            $search['users.family_id'] = 1;
+        }
+
         $serves = $request->query('serves',0);
         $rating = isset($request->rating) ? $request->rating : 0;
         $oldCuisine = isset($request->cuisine) ? $request->cuisine : 0;
         $oldMeal = isset($request->meal) ? $request->meal : 0;
-        $oldFamily = isset($request->family) ? $request->family : 0;
+        
         $servesFrom = 0;
         $servesTo = 11;
 
@@ -41,9 +56,7 @@ class HomeController extends Controller
             $search['meal_id'] = $request->meal;
         }
 
-        if (isset($request->family) && $request->family != "All") {
-            $search['users.family_id'] = $request->family;
-        }
+
 
         if ($request->serves == "1") {
             $servesTo = 2;
@@ -68,6 +81,6 @@ class HomeController extends Controller
             ->get();
         
         return view('welcome', ['recipes' => $recipes, 'serves' => $serves, 'rating' => $rating ,'cuisines' => $cuisines, 
-            'oldCuisine' => $oldCuisine  , 'meals' => $meals, 'oldMeal'=> $oldMeal, 'familys'=> $familys, 'oldFamily'=>$oldFamily]);
+            'oldCuisine' => $oldCuisine  , 'meals' => $meals, 'oldMeal'=> $oldMeal, 'familys'=> $familys, 'selectedFamily'=>$selectedFamily]);
     }
 }

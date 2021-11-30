@@ -102,13 +102,11 @@ class RegisteredUserController extends Controller
         if (!Gate::allows('admin-family', $user)) {
             abort(403);
         }
-
-        Recipe::where('user_id', $user->id)->update(['user_id' => Auth::id()]);
+     
         $user->admin =  !$user->admin;
         $user->save();
         return redirect('/familys/' . auth::user()->family_id);
     }
-
 
     public function destroy(user $user)
     {
@@ -121,6 +119,7 @@ class RegisteredUserController extends Controller
     
         return redirect('/familys/' . auth::user()->family_id);
     }
+    
     public function notify(string $comment)
     {
         Mail::send(

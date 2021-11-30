@@ -33,16 +33,16 @@ class DatabaseSeeder extends Seeder
         \App\Models\Cuisine::factory(1)->create(['name' => 'Student']);
         \App\Models\Cuisine::factory(1)->create(['name' => 'Baking']);
         
-        // \App\Models\Family::factory(1)->create(['name' => 'Cartman','public_access' => '1']);
+        \App\Models\Family::factory(1)->create(['name' => 'Example','public_access' => '1']);
         \App\Models\Family::factory(1)->create(['name' => 'Marsh','public_access' => '1']);
-        // \App\Models\Family::factory(1)->create(['name' => 'Broflovski']);
+        \App\Models\Family::factory(1)->create(['name' => 'Broflovski']);
 
         \App\Models\User::factory(1)->create(['email' => 'a@a.com','family_id' => '1','admin' => '1']);
-        // \App\Models\User::factory(1)->create(['email' => 'b@b.com','family_id' => '2','admin' => '1']);
-        // \App\Models\User::factory(1)->create(['email' => 'c@c.com','family_id' => '3','admin' => '1']);
-        // \App\Models\User::factory(10)->create();
+        \App\Models\User::factory(1)->create(['email' => 'b@b.com','family_id' => '2','admin' => '1']);
+        \App\Models\User::factory(1)->create(['email' => 'c@c.com','family_id' => '3','admin' => '1']);
+        \App\Models\User::factory(10)->create();
         
-        // \App\Models\Payment::factory(10)->create();
+        \App\Models\Payment::factory(10)->create();
    
         \App\Models\Recipe::factory(1)->create(
             ['name' => 'Lamb and French  Lentil Salad',
@@ -59,7 +59,7 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        // \App\Models\Recipe::factory(20)->create();
-        // \App\Models\Comment::factory(10)->create();
+        \App\Models\Recipe::factory(20)->create();
+        \App\Models\Comment::factory(10)->create();
     }
 }

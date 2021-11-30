@@ -15,23 +15,25 @@
     <form method="GET" action="#search" enctype="multipart/form-data" class="row gy-2 gx-3 align-items-center mt-1 mb-5">
 
         <div class="row justify-content-center mt-4">
+
             <div class="col-lg-auto mt-2 col-2 ">
                 <label class="form-check-label mt-1" for="family">Family</label>
             </div>
-            <div class="col-lg-auto mt-2 col-4 ">
+            <div class="col-lg-auto mt-2 col-5 ">
                 <select class="form-select" id="family" name="family" onchange="this.form.submit()">
-                    <option>All</option>
                     @foreach ($familys as $family)
-                    <option value="{{$family->id}}" {{ $family->id == $oldFamily ? 'selected':'' }}> {{$family->name}} </option>
+                    <option value="{{$family->id}}" {{ $family->id == $selectedFamily ? 'selected':'' }}> {{$family->name}} </option>
                     @endforeach
                 </select>
+
+
             </div>
 
             <div class="col-lg-auto mt-2 col-2 ">
                 <label class="form-check-label mt-1" for="serves">Serves</label>
             </div>
 
-            <div class="col-lg-auto mt-2 col-4  ">
+            <div class="col-lg-auto mt-2 col-3  ">
                 <select class="form-select" id="serves" name="serves" onchange="this.form.submit()">
                     <option>All</option>
                     <option value="1" {{ $serves == 1 ? 'selected':'' }}>1 - 2 </option>
@@ -40,10 +42,22 @@
                 </select>
             </div>
 
+            <div class="col-lg-auto mt-2 col-2 ">
+                <label class="form-check-label mt-1" for="cuisine">Cuisine</label>
+            </div>
+            <div class="col-lg-auto mt-2 col-5">
+                <select class="form-select" id="cuisine" name="cuisine" onchange="this.form.submit()">
+                    <option>All</option>
+                    @foreach ($cuisines as $cuisine)
+                    <option value="{{$cuisine->id}}" {{ $cuisine->id == $oldCuisine ? 'selected':'' }}> {{$cuisine->name}} </option>
+                    @endforeach
+                </select>
+            </div>
+
             <div class="col-lg-auto mt-2 col-2  ">
                 <label class="form-check-label mt-1" for="rating">Rating</label>
             </div>
-            <div class="col-lg-auto mt-2 col-4  ">
+            <div class="col-lg-auto mt-2 col-3  ">
                 <select class="form-select" id="rating" name="rating" onchange="this.form.submit()">
                     <option>All</option>
                     <option value="1" {{ $rating == 1 ? 'selected':'' }}>*</option>
@@ -54,28 +68,22 @@
                 </select>
             </div>
 
-            <div class="col-lg-auto mt-2 col-2 ">
-                <label class="form-check-label mt-1" for="cuisine">Cuisine</label>
-            </div>
-            <div class="col-lg-auto mt-2 col-4 ">
-                <select class="form-select" id="cuisine" name="cuisine" onchange="this.form.submit()">
-                    <option>All</option>
-                    @foreach ($cuisines as $cuisine)
-                    <option value="{{$cuisine->id}}" {{ $cuisine->id == $oldCuisine ? 'selected':'' }}> {{$cuisine->name}} </option>
-                    @endforeach
-                </select>
-            </div>
+       
 
             <div class="col-lg-auto mt-2 col-2 ">
                 <label class="form-check-label mt-1" for="meal">Meal</label>
             </div>
-            <div class="col-lg-auto mt-2 col-4 ">
+            <div class="col-lg-auto mt-2 col-5 ">
                 <select class="form-select" id="meal" name="meal" onchange="this.form.submit()">
                     <option>All</option>
                     @foreach ($meals as $meal)
                     <option value="{{$meal->id}}" {{ $meal->id == $oldMeal ? 'selected':'' }}> {{$meal->name}} </option>
                     @endforeach
                 </select>
+            </div>
+            
+            <div class="col-lg-auto col-5 mt-2">
+                <a href="/recipes/create" class="btn btn-outline-success mb-2 btn-width  ">New Recipe</a>
             </div>
         </div>
     </form>
@@ -125,16 +133,29 @@
                                     </div>
                 </div>
                 <br>
-                <div class="row">
-                    <div class="col me-2">
-                        <h6 class="text-end ">
-                            Chef {{$recipe->user->name}}
+                <div class="row ms-2 mb-1">
+                    <div class="col">
+                        <form action="recipes/{{$recipe->id}}" method="POST">
+                            @method('DELETE')
+
+                            @auth
+                            @can('update-recipe', $recipe)
+                            <a class="mt-1 mx-auto btn btn-small btn-info" href="recipes/{{$recipe->id}}/edit">Edit </a>
+
+                            @csrf
+                            <button type="submit" title="delete" class="mt-1 mx-auto btn btn-small btn-danger">Delete </button>
+                            @endcan
+                            @endauth
+                    </div>
+                    <div class="col">
+                        <h6 class="text-end me-1 pt-1">
+                            Recipe chef {{$recipe->user->name}}
                         </h6>
                     </div>
+                    </form>
                 </div>
             </div>
         </div>
         @endforeach
     </div>
-
     @endsection

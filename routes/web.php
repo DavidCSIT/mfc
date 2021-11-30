@@ -10,6 +10,7 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 
 Route::get('/', [HomeController::class, 'index']);
+Route::get('/recipes/index', [HomeController::class, 'index']);
 
 Route::resource('recipes.comments', CommentController::class)->only(['create','destroy','store'])->middleware(['auth', 'verified']);
 
