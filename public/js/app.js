@@ -1,3 +1,19 @@
+function copyTextToClipboard() {
+  /* Get the text field */
+  var copyText = document.getElementById("myInput");
+
+  /* Select the text field */
+  copyText.select();
+  copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+   /* Copy the text inside the text field */
+  navigator.clipboard.writeText(copyText.value);
+
+  /* Alert the copied text */
+  alert("Copied! Paste and send this link to invite others to contribute");
+}
+
+
 // Disabling form submissions if there are invalid fields
 (function () {
     'use strict'
@@ -18,3 +34,7 @@
         }, false)
       })      
   })()
+
+
+  
+

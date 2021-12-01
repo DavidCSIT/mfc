@@ -70,8 +70,8 @@
             <script src="https://js.stripe.com/v3/"></script>
             <form action="{{ route('stripe.store') }}" method="post" id="payment-form" class="needs-validation" novalidate>
                 @csrf
-                <div class="col-4">
-                    <input type="text" class="form-control col-4" name="amount" placeholder="Amount in USD" required />
+                <div class="">
+                    <input type="text" class="form-control " name="amount" placeholder="Amount in USD" required />
                 </div>
                 <input type="email" class="form-control" name="email" placeholder="Optionally enter your eMail address for our records" />
                 <div id="card-element">
@@ -105,8 +105,8 @@
                 <!-- BTC form-->
                 <form action="{{ route('stripe.store') }}" method="post" id="payment-form" class="needs-validation" novalidate>
                     @csrf
-                    <div class="col-4">
-                        <input type="text" class="form-control col-4" name="amount" placeholder="Amount in USD" required />
+                    <div class="">
+                        <input type="text" class="form-control " name="amount" placeholder="Amount in USD" required />
                     </div>
                     <input type="email" class="form-control" name="email" placeholder="Optionally enter your eMail address for our records" />
                     <button class="btn btn-primary my-2">Donate by Bitcoin </button>
