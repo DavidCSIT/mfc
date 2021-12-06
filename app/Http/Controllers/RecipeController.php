@@ -23,50 +23,46 @@ class RecipeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
-    {
-        {
-   
+    { {
+
             $meals = Meal::all();
             $cuisines = Cuisine::orderBy('name', 'asc')->get();
-            $familys = Family::where( 'public_access',1)->get();
-    
             $search = [];
-    
-            if (isset($request->family)){
-                    $selectedFamily = $request->family;
-                    $search['users.family_id'] = $request->family;
-            }
-            elseif (Auth::check()){
+
+            if (Auth::check()) {
+                $familys = Family::where('id', Auth::user()->family_id)->get();
                 $selectedFamily = Auth::user()->family_id;
-                $search['users.family_id'] = Auth::user()->family_id;        
-            }
-            else {
+                $search['users.family_id'] = Auth::user()->family_id;
+            } elseif (isset($request->family)) {
+                $familys = Family::where('public_access', 1)->get();
+                $selectedFamily = $request->family;
+                $search['users.family_id'] = $request->family;
+            } else {
+                $familys = Family::where('public_access', 1)->get();
                 $selectedFamily = 1;
                 $search['users.family_id'] = 1;
             }
-    
-            $serves = $request->query('serves',0);
+
+            $serves = $request->query('serves', 0);
             $rating = isset($request->rating) ? $request->rating : 0;
             $oldCuisine = isset($request->cuisine) ? $request->cuisine : 0;
             $oldMeal = isset($request->meal) ? $request->meal : 0;
-            
+
             $servesFrom = 0;
             $servesTo = 11;
-    
+
             if (isset($request->rating) && $request->rating != "All") {
                 $search['rating'] = $request->rating;
             }
-    
+
             if (isset($request->cuisine) && $request->cuisine != "All") {
                 $search['cuisine_id'] = $request->cuisine;
             }
-    
+
             if (isset($request->meal) && $request->meal != "All") {
                 $search['meal_id'] = $request->meal;
             }
-    
-    
-    
+
             if ($request->serves == "1") {
                 $servesTo = 2;
             } elseif ($request->serves == "3") {
@@ -75,22 +71,24 @@ class RecipeController extends Controller
             } elseif ($request->serves == "5") {
                 $servesFrom = 5;
             }
-    
+
             $search['families.public_access'] = 1;
             // $recipes = DB::table('recipes')
             //     ->join('users', 'users.id', '=', 'recipes.user_id' )
             //     ->where('users.family_id','=', 1)
             //     ->get();
-            $recipes = Recipe::join('users', 'users.id', '=', 'recipes.user_id' )
-                ->join('families', 'families.id', '=', 'users.family_id' )
-                 ->where($search)
+            $recipes = Recipe::join('users', 'users.id', '=', 'recipes.user_id')
+                ->join('families', 'families.id', '=', 'users.family_id')
+                ->where($search)
                 ->whereBetween('serves', [$servesFrom, $servesTo])
                 ->orderBy('rating', 'desc')
                 ->select('recipes.*')
                 ->get();
-            
-            return view('welcome', ['recipes' => $recipes, 'serves' => $serves, 'rating' => $rating ,'cuisines' => $cuisines, 
-                'oldCuisine' => $oldCuisine  , 'meals' => $meals, 'oldMeal'=> $oldMeal, 'familys'=> $familys, 'selectedFamily'=>$selectedFamily]);
+
+            return view('welcome', [
+                'recipes' => $recipes, 'serves' => $serves, 'rating' => $rating, 'cuisines' => $cuisines,
+                'oldCuisine' => $oldCuisine, 'meals' => $meals, 'oldMeal' => $oldMeal, 'familys' => $familys, 'selectedFamily' => $selectedFamily
+            ]);
         }
     }
 
@@ -101,7 +99,7 @@ class RecipeController extends Controller
      */
     public function create()
     {
-        $meals = Meal::all(); 
+        $meals = Meal::all();
         $cuisines = Cuisine::orderBy('name', 'asc')->get();
         $family = Family::all();
         return view('recipes.create', ['meals' => $meals, 'cuisines' => $cuisines]);
@@ -161,14 +159,13 @@ class RecipeController extends Controller
      */
     public function show(recipe $recipe)
     {
-        if ( Gate::allows('Recipe-in-my-cookbook', $recipe) ||  Gate::allows('recipe-public', $recipe)    ) {
+        if (Gate::allows('Recipe-in-my-cookbook', $recipe) ||  Gate::allows('recipe-public', $recipe)) {
             $recipe_comments = Comment::where('recipe_id', "=", $recipe->id)->get();
             return view('recipes.show', ['recipe' => $recipe, 'recipe_comments' => $recipe_comments]);
-        }
-        else {
+        } else {
             abort(403);
-        }      
-     }
+        }
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -178,13 +175,13 @@ class RecipeController extends Controller
      */
     public function edit(recipe $recipe)
     {
-        if (! Gate::allows('update-recipe', $recipe)) {
+        if (!Gate::allows('update-recipe', $recipe)) {
             abort(403);
         }
 
         $meal = Meal::all();
         $cuisine = Cuisine::all();
-        return view('recipes.edit', ['recipe'=>$recipe,'meals' => $meal, 'cuisines' => $cuisine]);
+        return view('recipes.edit', ['recipe' => $recipe, 'meals' => $meal, 'cuisines' => $cuisine]);
     }
 
     /**
@@ -196,7 +193,7 @@ class RecipeController extends Controller
      */
     public function update(Request $request, recipe $recipe)
     {
-        if (! Gate::allows('update-recipe', $recipe)) {
+        if (!Gate::allows('update-recipe', $recipe)) {
             abort(403);
         }
         request()->validate([
@@ -213,7 +210,7 @@ class RecipeController extends Controller
             'steps' => 'required|max:1000'
         ]);
 
-        if(isset($request->image)) {
+        if (isset($request->image)) {
             $imageName = time() . '.' . $request->image->extension();
             $request->file('image')->move(public_path('images'), $imageName);
             $recipe->image =  request('image');
@@ -244,7 +241,7 @@ class RecipeController extends Controller
      */
     public function destroy(recipe $recipe)
     {
-        if (! Gate::allows('update-recipe', $recipe)) {
+        if (!Gate::allows('update-recipe', $recipe)) {
             abort(403);
         }
         $recipe->delete();

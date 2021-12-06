@@ -81,6 +81,7 @@
         </div>
         <p>Password minimum requirements, 8 chars, 1 uppercase, 1 lowers, 1 number and uncompromised</p>
         <input class="col-1 button is-link btn btn-primary" type="submit" value="Submit">
+        <a class="ms-1 col-1 button is-link btn btn-light" href="/">Cancel </a>
     </form>
     <br>
     @if ($errors->any())

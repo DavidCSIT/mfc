@@ -19,19 +19,19 @@ class HomeController extends Controller
    
         $meals = Meal::all();
         $cuisines = Cuisine::orderBy('name', 'asc')->get();
-        $familys = Family::where( 'public_access',1)->get();
-
+        
         $search = [];
 
-        if (isset($request->family)){
-                $selectedFamily = $request->family;
-                $search['users.family_id'] = $request->family;
-        }
-        elseif (Auth::check()){
+        if (Auth::check()) {
+            $familys = Family::where('id', Auth::user()->family_id)->get();
             $selectedFamily = Auth::user()->family_id;
-            $search['users.family_id'] = Auth::user()->family_id;        
-        }
-        else {
+            $search['users.family_id'] = Auth::user()->family_id;
+        } elseif (isset($request->family)) {
+            $familys = Family::where('public_access', 1)->get();
+            $selectedFamily = $request->family;
+            $search['users.family_id'] = $request->family;
+        } else {
+            $familys = Family::where('public_access', 1)->get();
             $selectedFamily = 1;
             $search['users.family_id'] = 1;
         }

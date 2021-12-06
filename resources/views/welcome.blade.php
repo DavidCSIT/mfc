@@ -17,17 +17,23 @@
         <div class="row justify-content-center mt-4">
 
             <div class="col-lg-auto mt-2 col-2 ">
-                <label class="form-check-label mt-1" for="family">Family</label>
+                <label class="form-check-label mt-1" for="family">Cookbook</label>
             </div>
+
             <div class="col-lg-auto mt-2 col-5 ">
-                <select class="form-select" id="family" name="family" onchange="this.form.submit()">
-                    @foreach ($familys as $family)
-                    <option value="{{$family->id}}" {{ $family->id == $selectedFamily ? 'selected':'' }}> {{$family->name}} </option>
-                    @endforeach
-                </select>
-
-
+                @auth
+                <fieldset disabled>
+                @endauth
+                    <select class="form-select disabled" id="family" name="family" onchange="this.form.submit()">
+                        @foreach ($familys as $family)
+                        <option value="{{$family->id}}" {{ $family->id == $selectedFamily ? 'selected':'' }}> {{$family->name}} </option>
+                        @endforeach
+                    </select>
+                @auth
+                </fieldset>
+                @endauth
             </div>
+
 
             <div class="col-lg-auto mt-2 col-2 ">
                 <label class="form-check-label mt-1" for="serves">Serves</label>
@@ -68,8 +74,6 @@
                 </select>
             </div>
 
-       
-
             <div class="col-lg-auto mt-2 col-2 ">
                 <label class="form-check-label mt-1" for="meal">Meal</label>
             </div>
@@ -81,7 +85,7 @@
                     @endforeach
                 </select>
             </div>
-            
+
             <div class="col-lg-auto col-5 mt-2">
                 <a href="/recipes/create" class="btn btn-outline-success mb-2 btn-width  ">New Recipe</a>
             </div>

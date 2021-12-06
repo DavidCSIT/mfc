@@ -58,6 +58,7 @@
         </div>
 
         <button type="submit" class="btn btn-primary my-2">Send Message</button>
+        <a class="ms-1 button is-link btn btn-light" href="/">Cancel </a>
     </form>
 </section>
 
@@ -81,6 +82,7 @@
                 <!-- Display form errors. -->
                 <div id="card-errors" role="alert" class="text-danger"></div>
                 <button class="btn btn-primary my-2">Donate by card </button>
+                <a class="ms-1 button is-link btn btn-light" href="/">Cancel </a>
             </form>
             <script>
                 var publishable_key = "{{ env('STRIPE_KEY') }}";
@@ -110,6 +112,7 @@
                     </div>
                     <input type="email" class="form-control" name="email" placeholder="Optionally enter your eMail address for our records" />
                     <button class="btn btn-primary my-2">Donate by Bitcoin </button>
+                    <a class="ms-1 button is-link btn btn-light" href="/">Cancel </a>
                 </form>
             </div>
 </section>

@@ -85,6 +85,7 @@
     <div class="field is-grouped mt-3">
       <div class="control">
         <button class="button is-link btn btn-primary" type="submit" name="button">Update Recipe</button>
+        <a class="ms-1 button is-link btn btn-light" href="/">Cancel </a>
       </div>
     </div>
   </form>
