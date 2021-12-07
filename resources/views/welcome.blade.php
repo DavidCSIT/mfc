@@ -12,15 +12,15 @@
 
 <!-- Search -->
 <div class="container-xxl">
-    <form method="GET" action="#search" enctype="multipart/form-data" class="row gy-2 gx-3 align-items-center mt-1 mb-5">
+    <form method="GET" action="#search" enctype="multipart/form-data" class="row align-items-center ">
 
-        <div class="row justify-content-center mt-4">
+        <div class="row justify-content-center mt-3 ">
 
-            <div class="col-lg-auto mt-2 col-2 ">
-                <label class="form-check-label mt-1" for="family">Cookbook</label>
+            <div class="col-lg-auto col-3 mt-2">
+                <label class="form-check-label mt-1"  for="family">Cookbook</label>
             </div>
 
-            <div class="col-lg-auto mt-2 col-5 ">
+            <div class="col-lg-auto col-8 mt-2 ">
                 @auth
                 <fieldset disabled>
                 @endauth
@@ -34,24 +34,10 @@
                 @endauth
             </div>
 
-
-            <div class="col-lg-auto mt-2 col-2 ">
-                <label class="form-check-label mt-1" for="serves">Serves</label>
-            </div>
-
-            <div class="col-lg-auto mt-2 col-3  ">
-                <select class="form-select" id="serves" name="serves" onchange="this.form.submit()">
-                    <option>All</option>
-                    <option value="1" {{ $serves == 1 ? 'selected':'' }}>1 - 2 </option>
-                    <option value="3" {{ $serves == 3 ? 'selected':'' }}>3 - 4</option>
-                    <option value="5" {{ $serves == 5 ? 'selected':'' }}>5+</option>
-                </select>
-            </div>
-
-            <div class="col-lg-auto mt-2 col-2 ">
+            <div class="col-lg-auto mt-2 col-3 ">
                 <label class="form-check-label mt-1" for="cuisine">Cuisine</label>
             </div>
-            <div class="col-lg-auto mt-2 col-5">
+            <div class="col-lg-auto mt-2 col-8">
                 <select class="form-select" id="cuisine" name="cuisine" onchange="this.form.submit()">
                     <option>All</option>
                     @foreach ($cuisines as $cuisine)
@@ -60,10 +46,35 @@
                 </select>
             </div>
 
+            <div class="col-lg-auto mt-2 col-3 ">
+                <label class="form-check-label mt-1" for="meal">Meal</label>
+            </div>
+            <div class="col-lg-auto mt-2 col-8 ">
+                <select class="form-select" id="meal" name="meal" onchange="this.form.submit()">
+                    <option>All</option>
+                    @foreach ($meals as $meal)
+                    <option value="{{$meal->id}}" {{ $meal->id == $oldMeal ? 'selected':'' }}> {{$meal->name}} </option>
+                    @endforeach
+                </select>
+            </div>
+
+            <div class="col-lg-auto col-2 mt-2 ">
+                <label class="form-check-label mt-1" for="serves">Serves</label>
+            </div>
+
+            <div class="col-lg-auto col-4 mt-2  ">
+                <select class="form-select" id="serves" name="serves" onchange="this.form.submit()">
+                    <option>All</option>
+                    <option value="1" {{ $serves == 1 ? 'selected':'' }}>1 - 2 </option>
+                    <option value="3" {{ $serves == 3 ? 'selected':'' }}>3 - 4</option>
+                    <option value="5" {{ $serves == 5 ? 'selected':'' }}>5+</option>
+                </select>
+            </div>
+
             <div class="col-lg-auto mt-2 col-2  ">
                 <label class="form-check-label mt-1" for="rating">Rating</label>
             </div>
-            <div class="col-lg-auto mt-2 col-3  ">
+            <div class="col-lg-auto mt-2 col-4  ">
                 <select class="form-select" id="rating" name="rating" onchange="this.form.submit()">
                     <option>All</option>
                     <option value="1" {{ $rating == 1 ? 'selected':'' }}>*</option>
@@ -74,21 +85,11 @@
                 </select>
             </div>
 
-            <div class="col-lg-auto mt-2 col-2 ">
-                <label class="form-check-label mt-1" for="meal">Meal</label>
-            </div>
-            <div class="col-lg-auto mt-2 col-5 ">
-                <select class="form-select" id="meal" name="meal" onchange="this.form.submit()">
-                    <option>All</option>
-                    @foreach ($meals as $meal)
-                    <option value="{{$meal->id}}" {{ $meal->id == $oldMeal ? 'selected':'' }}> {{$meal->name}} </option>
-                    @endforeach
-                </select>
-            </div>
-
+            @auth
             <div class="col-lg-auto col-5 mt-2">
                 <a href="/recipes/create" class="btn btn-outline-success mb-2 btn-width  ">New Recipe</a>
             </div>
+            @endauth
         </div>
     </form>
 </div>
