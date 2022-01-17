@@ -115,7 +115,7 @@ class RecipeController extends Controller
     {
         request()->validate([
             'name' => 'required|max:30',
-            'image' => 'required|image|mimes:jpeg,png,jpg|max:3000',
+            'image' => 'required|image|mimes:jpeg,png,jpg,webp|max:4096',
             'serves' => 'required',
             'rating' => 'required',
             'about' => 'required|max:300',
@@ -127,17 +127,28 @@ class RecipeController extends Controller
             'steps' => 'required|max:1000'
         ]);
 
-        $imageName = time() . '.' . $request->image->extension();
-        $request->file('image')->move(public_path('images'), $imageName);
-        //$path = $request->image->store('images');
+        $image = $request->file('image');
+        $input['imagename'] = time().'.'.$image->extension();
+     
+        $filePath = public_path('/images');
+
+        $img = Image::make($image->path());
+        $img->resize(1000, 1000, function ($const) {
+            $const->aspectRatio();
+            $const->upSize();
+        })->save($filePath.'/'.$input['imagename']);
+
+        // $imageName = time() . '.' . $request->image->extension();   V2
+        // $request->file('image')->move(public_path('images'), $imageName);   V2
+        
+        //$path = $request->image->store('images');  V1
 
         $recipe = new Recipe();
         $recipe->name = request('name');
         $recipe->about = request('about');
         $recipe->serves = request('serves');
         $recipe->image =  request('image');
-        $recipe->image_path =  "/images/" . $imageName;
-        // $recipe->image_path =  $path;
+        $recipe->image_path =  "/images/" . $input['imagename'];
         $recipe->rating =  request('rating');
         $recipe->cookTime =  request('cookTime');
         $recipe->prepTime =  request('prepTime');
@@ -211,10 +222,17 @@ class RecipeController extends Controller
         ]);
 
         if (isset($request->image)) {
-            $imageName = time() . '.' . $request->image->extension();
-            $request->file('image')->move(public_path('images'), $imageName);
-            $recipe->image =  request('image');
-            $recipe->image_path =  "/images/" . $imageName;
+            $image = $request->file('image');
+            $input['imagename'] = time().'.'.$image->extension();
+         
+            $filePath = public_path('/images');
+    
+            $img = Image::make($image->path());
+            $img->resize(1000, 1000, function ($const) {
+                $const->aspectRatio();
+                $const->upSize();
+            })->save($filePath.'/'.$input['imagename']);
+            $recipe->image_path =  "/images/" . $input['imagename'];
         }
 
         $recipe->name = request('name');

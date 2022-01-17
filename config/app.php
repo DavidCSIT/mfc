@@ -175,6 +175,11 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        /*
+         * Additional providers...
+         */
+        Intervention\Image\ImageServiceProvider::class
+
     ],
 
     /*
@@ -228,6 +233,9 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+
+        // Additional Aliases
+        'Image' => Intervention\Image\Facades\Image::class
 
     ],
 
