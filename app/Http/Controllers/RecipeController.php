@@ -115,7 +115,7 @@ class RecipeController extends Controller
     {
         request()->validate([
             'name' => 'required|max:30',
-            'image' => 'required|image|mimes:jpeg,png,jpg,webp|max:4096',
+            'image' => 'required|image|mimes:jpeg,png,jpg,webp|max:8192',
             'serves' => 'required',
             'rating' => 'required',
             'about' => 'required|max:300',
@@ -209,7 +209,7 @@ class RecipeController extends Controller
         }
         request()->validate([
             'name' => 'required|max:30',
-            'image' => 'image|mimes:jpeg,png,jpg|max:3000',
+            'image' => 'image|mimes:jpeg,png,jpg,webp|max:8192',
             'serves' => 'required',
             'rating' => 'required',
             'about' => 'required|max:300',
