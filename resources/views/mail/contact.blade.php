@@ -39,28 +39,7 @@
 <!-- Contact Us-->
 <section class="container mt-4">
     <h1>Contact Us</h1>
-    <p>email Chef@myfamilycookbook.org or use the form below</p>
-
-    <form method="POST" action="/contact">
-        @csrf
-        <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
-            <input name="email" type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter your email">
-            <span class="text-danger">{{ $errors->first('email') }}</span>
-        </div>
-        <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
-            <input name="name" type="text" class="form-control" id="name" aria-describedby="name" placeholder="Your name">
-            <span class="text-danger">{{ $errors->first('name') }}</span>
-
-        </div>
-        <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
-            <textarea name="comment" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Message"></textarea>
-            <span class="text-danger">{{ $errors->first('comment') }}</span>
-        </div>
-
-        <button type="submit" class="btn btn-primary my-2">Send Message</button>
-        <a class="ms-1 button is-link btn btn-light" href="/">Cancel </a>
-    </form>
-</section>
+    <p>email Chefadmin@myfamilycookbook.org </p>
 
 <!-- Donate cc  -->
 <section class="container mt-4">
