@@ -39,7 +39,7 @@
 <!-- Contact Us-->
 <section class="container mt-4">
     <h1>Contact Us</h1>
-    <p>email Chefadmin@myfamilycookbook.org </p>
+    <p>email Chef@myfamilycookbook.org </p>
 
 <!-- Donate cc  -->
 <section class="container mt-4">
